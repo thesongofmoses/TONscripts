@@ -68,7 +68,6 @@ function NEXT_CYCLE_END_TIME () {
 }
 
 #8 - echo calendar
-
 echo 'Upcoming Election'
 SINCE_TIME
 UNTIL_TIME
