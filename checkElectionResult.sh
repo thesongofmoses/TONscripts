@@ -30,7 +30,7 @@ if [ "$CONVERTED_TOKENS" != "0" ]; then
         
 #6 - if amount equals zero, print warning msg
 elif [ "$unconvertedTokens" == "0" ]; then
-        echo "WARNING: Election failed"
+        echo "WARNING: Election submission failed"
         echo ""
         printf "Current Election ID: "
         echo "$CURRENT_ELECTION_ID"
