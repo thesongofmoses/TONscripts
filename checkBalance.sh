@@ -15,10 +15,11 @@ MY_BALANCE=$(echo "$MY_ACCOUNT" | tail -n 1 | tr -d '=''ng' | awk '{print $4}')
 #4 - convert tokens to regular unit
 CONVERTED_TOKENS=$(echo "$MY_BALANCE"/1000000000 | bc -l)
 
-#5 display balance
+#5 display balance up to 9 decimals
 function balance () {
         printf "Wallet Balance: "
-        echo $CONVERTED_TOKENS
+        echo ""
+        printf "%.9f" $CONVERTED_TOKENS
 }
 
 balance
