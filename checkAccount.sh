@@ -16,9 +16,8 @@ ACCOUNT_STATUS=$(echo "$MY_ACCOUNT" | grep account | awk 'FNR == 3 {print $1}' |
 LAST_TRANS_LT=$(echo "$MY_ACCOUNT" | grep account | awk 'FNR == 2 {print $2}' | tr -d 'last_trans_lt:')
 
 #5 parse last transaction
-LAST_PAID=$(echo "$MY_ACCOUNT" | grep last_paid | awk '{print $4}' | tr -d 'last_paid:')
-CONVERTED_LAST_PAID=$(echo "$LAST_PAID"/1000000000 | bc -l)
-ROUNDED_LAST_PAID=$(printf "%.9f" $CONVERTED_LAST_PAID)
+LAST_TIME=$(echo "$MY_ACCOUNT" | grep last_paid | awk '{print $4}' | tr -d 'last_paid:')
+CONVERTED_LAST_TIME=$(date -d @"$LAST_TIME")
 
 #6 - print account info
 printf "Address: "
@@ -27,5 +26,5 @@ printf "Status: "
 echo $ACCOUNT_STATUS
 printf "Last Transaction Logical Time: "
 echo $LAST_TRANS_LT
-printf "Last Transaction Amount: "
-echo $ROUNDED_LAST_PAID
+printf "Last Transaction Time: "
+echo $CONVERTED_LAST_TIME
