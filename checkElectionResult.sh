@@ -27,6 +27,7 @@ if [ "$CONVERTED_TOKENS" != "0" ]; then
         printf "Staked Tokens: "
         echo "$CONVERTED_TOKENS"
         echo "-----------CONFIRMED-----------"
+        
 #6 - if amount equals zero, print warning msg
 elif [ "$unconvertedTokens" == "0" ]; then
         echo "WARNING: Election failed"
