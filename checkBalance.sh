@@ -17,7 +17,7 @@ CONVERTED_TOKENS=$(echo "$MY_BALANCE"/1000000000 | bc -l)
 
 #5 display balance up to 9 decimals
 function balance () {
-        printf "Wallet Balance: "
+        printf "Account Balance: "
         printf "%.9f" $CONVERTED_TOKENS
         echo ""
 }
