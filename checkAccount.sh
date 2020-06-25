@@ -17,6 +17,7 @@ LAST_TRANS_LT=$(cd ~/net.ton.dev/ton/build/lite-client && ./lite-client -p ~/ton
 
 #5 parse last transaction
 LAST_PAID=$(cd ~/net.ton.dev/ton/build/lite-client && ./lite-client -p ~/ton-keys/liteserver.pub -a 127.0.0.1:3031 -rc "getaccount ${MY_RAW_ADDRESS}" -rc 'quit' 2>/dev/null | grep last_paid | awk '{print $4}' | tr -d 'last_paid:')
+CONVERTED_LAST_PAID=$(echo $LAST_PAID/1000000000 | bc -l)
 
 #6 - print account info
 printf "Account Address: "
@@ -26,4 +27,4 @@ echo $ACCOUNT_STATUS
 printf "Last Transaction Logical Time: "
 echo $LAST_TRANS_LT
 printf "Last Transaction Amount: "
-echo $LAST_PAID
+echo $CONVERTED_LAST_PAID
