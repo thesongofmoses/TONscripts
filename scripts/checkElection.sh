@@ -43,7 +43,7 @@ if [ "$ROUNDED_TOKENS" != "0.000000000" ]; then
 
 #9 - if amount equals zero, print warning msg
 elif [ "$ROUNDED_TOKENS" == "0.000000000" ]; then
-        echo "WARNING: Election submission failed"
+        echo "WARNING: NO STAKES FOUND"
         printf "Current Election ID: "
         echo "$UPCOMING_ACTIVE_ELECTION_ID"
         printf "Staked Tokens: "
