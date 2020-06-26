@@ -45,7 +45,7 @@ NEXT_VALIDATION_START_UNIXTIME=$(expr $SINCE_TIMESTAMP + $CYCLE_DURATION)
 NEXT_VALIDATION_END_UNIXTIME=$(expr $UNTIL_TIMESTAMP + $CYCLE_DURATION)
 
 
-#6 - convert all unixtime to human time
+#6 - convert all unixtime to humantime
 #6A - previous election cycle to humantime
 PREVIOUS_ELECTION_START_HUMANTIME=$(date -d @"$PREVIOUS_ELECTION_START_UNIXTIME")
 PREVIOUS_ELECTION_END_HUMANTIME=$(date -d @"$PREVIOUS_ELECTION_END_UNIXTIME")
@@ -87,6 +87,7 @@ printf 'Active Election ID: '
 echo "$UPCOMING_ACTIVE_ELECTION_ID"
 printf "Since:  "
 echo "$UPCOMING_ELECTION_START_HUMANTIME"
+printf "Until:  "
 echo "$UPCOMING_ELECTION_END_HUMANTIME"
 echo ""
 
