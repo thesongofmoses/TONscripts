@@ -45,10 +45,10 @@ if [ "$ROUNDED_TOKENS" != "0.000000000" ]; then
 elif [ "$ROUNDED_TOKENS" == "0.000000000" ]; then
         echo "WARNING: Election submission failed"
         printf "Current Election ID: "
-        echo "$CURRENT_ELECTION_ID"
+        echo "$UPCOMING_ACTIVE_ELECTION_ID"
         printf "Staked Tokens: "
         echo "$ROUNDED_TOKENS"
-        printf 'This election closes: '
+        printf 'ELECTION UNTIL: '
         echo "$UPCOMING_ELECTION_END_HUMANTIME"
 
 #10 - else, print unknown error msg
