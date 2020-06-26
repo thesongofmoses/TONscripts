@@ -11,8 +11,8 @@ FULL_PUBKEY=$(printf "0x%s" "$HALF_PUBKEY")
 CHECK_PARTICIPATION=$(cd ~/net.ton.dev/ton/build/lite-client && ./lite-client -p ~/ton-keys/liteserver.pub -a 127.0.0.1:3031 -rc "runmethodfull -1:3333333333333333333333333333333333333333333333333333333333333333 participates_in ${FULL_PUBKEY}" -rc 'quit' 2>/dev/null | awk 'FNR == 5 {print $3}')
 
 #3 - get active-election-id of new election
-CYCLE_DURATION=$(cd ~/net.ton.dev/ton/build/lite-client && ./lite-client -p ~/ton-keys/liteserver.pub -a 127.0.0.1:3031 -rc 'getconfig 15' -rc 'quit' 2>/dev/null | awk 'FNR == 4 {print $4}' | tr$
-PREVIOUS_ELECTION_ID=$(cd ~/net.ton.dev/ton/build/lite-client && ./lite-client -p ~/ton-keys/liteserver.pub -a 127.0.0.1:3031 -rc 'getconfig 34' -rc 'quit' 2>/dev/null | grep utime | awk '{print$
+CYCLE_DURATION=$(cd ~/net.ton.dev/ton/build/lite-client && ./lite-client -p ~/ton-keys/liteserver.pub -a 127.0.0.1:3031 -rc 'getconfig 15' -rc 'quit' 2>/dev/null | awk 'FNR == 4 {print $4}' | tr -d 'validators_elected_for:')
+PREVIOUS_ELECTION_ID=$(cd ~/net.ton.dev/ton/build/lite-client && ./lite-client -p ~/ton-keys/liteserver.pub -a 127.0.0.1:3031 -rc 'getconfig 34' -rc 'quit' 2>/dev/null | grep utime | awk '{print $2}' | tr -d 'utime_since:')
 
 #4 = get the current election human time
 CURRENT_ELECTION_TIME=$(date -d @$PREVIOUS_ELECTION_ID)
