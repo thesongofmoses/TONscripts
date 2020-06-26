@@ -34,7 +34,7 @@ UPCOMING_ACTIVE_ELECTION_ID=$UNTIL_TIMESTAMP
 if [ "$ROUNDED_TOKENS" != "0.000000000" ]; then
         echo "---------CURRENT ELECTION---------"
         printf "ID: "
-        echo "$PREVIOUS_ELECTION_ID"
+        echo "$UPCOMING_ACTIVE_ELECTION_ID"
         printf "Staked Tokens: "
         echo "$ROUNDED_TOKENS"
         echo '----------ELECTION UNTIL----------'
