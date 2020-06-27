@@ -81,13 +81,13 @@ elif [ "$GETCONFIG_CURRENT_ELECTION_ADNL_KEY" == "$DIR_CURRENT_ELECTION_ADNL_KEY
 
 #12 - if amount equals zero, print warning msg
 elif [ "$ROUNDED_TOKENS" == "0.000000000" ]; then
-        printf "${RED}WARNING: NO STAKES FOUND"
+        printf "${RED}WARNING: NO STAKES FOUND\n"
         printf "Election ID: "
         echo "$UPCOMING_ACTIVE_ELECTION_ID"
         printf "Staked Tokens: "
         echo "$ROUNDED_TOKENS"
         printf 'ELECTION UNTIL: '
-        printf "$UPCOMING_ELECTION_END_HUMANTIME${NO_COLOR}"
+        printf "$UPCOMING_ELECTION_END_HUMANTIME${NO_COLOR}\n"
 
 #13 - else, print unknown error msg
 else
