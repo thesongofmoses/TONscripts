@@ -32,7 +32,6 @@ ROUNDED_TOKENS=$(printf "%.9f" $CONVERTED_TOKENS)
 #7 - get active-election-id of upcoming election from getconfig34
 UPCOMING_ACTIVE_ELECTION_ID=$UNTIL_TIMESTAMP
 
-
 #8 - check if Elector confirms participation in current election and the amount
 if [ "$ROUNDED_TOKENS" != "0.000000000" ]; then
     printf "${GREEN}---------CURRENT ELECTION---------\n"
@@ -47,13 +46,13 @@ if [ "$ROUNDED_TOKENS" != "0.000000000" ]; then
 
 #9 - if amount equals zero, print warning msg
 elif [ "$ROUNDED_TOKENS" == "0.000000000" ]; then
-        printf "${RED}WARNING: NO STAKES FOUND"
+        printf "${RED}WARNING: NO STAKES FOUND\n"
         printf "Current Election ID: "
         echo "$UPCOMING_ACTIVE_ELECTION_ID"
         printf "Staked Tokens: "
         echo "$ROUNDED_TOKENS"
         printf 'ELECTION UNTIL: '
-        printf "$UPCOMING_ELECTION_END_HUMANTIME${NO_COLOR}"
+        printf "$UPCOMING_ELECTION_END_HUMANTIME${NO_COLOR}\n"
 
 #10 - else, print unknown error msg
 else
