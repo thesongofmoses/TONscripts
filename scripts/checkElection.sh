@@ -2,6 +2,9 @@
 
 #VARIABLES
 HOSTNAME=$(cat /etc/hostname)
+RED='\e[31m'
+GREEN='\e[32m'
+NO_COLOR='\e[0m'
 
 #1 - get pububkey (adnl)
 HALF_PUBKEY=$(cat ~/ton-keys/elections/$HOSTNAME-request-dump2 | grep 'public key' | awk '{print $11}' | tr '[:upper:]' '[:lower:]')
@@ -32,24 +35,25 @@ UPCOMING_ACTIVE_ELECTION_ID=$UNTIL_TIMESTAMP
 
 #8 - check if Elector confirms participation in current election and the amount
 if [ "$ROUNDED_TOKENS" != "0.000000000" ]; then
-        echo "---------CURRENT ELECTION---------"
+    printf "${GREEN}---------CURRENT ELECTION---------\n"
         printf "ID: "
-        echo "$UPCOMING_ACTIVE_ELECTION_ID"
+        printf "$UPCOMING_ACTIVE_ELECTION_ID\n"
         printf "Staked Tokens: "
-        echo "$ROUNDED_TOKENS"
-        echo '----------ELECTION UNTIL----------'
+        printf "$ROUNDED_TOKENS\n"
+        echo "----------ELECTION UNTIL----------"
         echo "---$UPCOMING_ELECTION_END_HUMANTIME---"
         echo "-------------CONFIRMED------------"
+        printf "${NO_COLOR}"
 
 #9 - if amount equals zero, print warning msg
 elif [ "$ROUNDED_TOKENS" == "0.000000000" ]; then
-        echo "WARNING: NO STAKES FOUND"
+        printf "${RED}WARNING: NO STAKES FOUND"
         printf "Current Election ID: "
         echo "$UPCOMING_ACTIVE_ELECTION_ID"
         printf "Staked Tokens: "
         echo "$ROUNDED_TOKENS"
         printf 'ELECTION UNTIL: '
-        echo "$UPCOMING_ELECTION_END_HUMANTIME"
+        printf "$UPCOMING_ELECTION_END_HUMANTIME${NO_COLOR}"
 
 #10 - else, print unknown error msg
 else
