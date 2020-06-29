@@ -55,8 +55,6 @@ NEXT_CYCLE_BEGIN_HUMANTIME=$(date -d @"$UNTIL_TIMESTAMP")
                 TOTAL_WEIGHT=$(cd ~/net.ton.dev/ton/build/lite-client && ./lite-client -p ~/ton-keys/liteserver.pub -a 127.0.0.1:3031 -rc 'getconfig 36' -rc 'quit' 2>/dev/null | grep 'total_weight' | awk '{print $6}' | tr -d 'total_weight:')
                 ROUNDED_TOTAL_WEIGHT=$(printf "%.10f" $TOTAL_WEIGHT)
 
-
-
 #10 - check if Elector confirms participation in current election and the amount
 if [ "$ROUNDED_TOKENS" != '0.000000000' ]; then
     printf "${GREEN}---------CURRENT ELECTION---------\n"
@@ -94,14 +92,14 @@ if [ "$GETCONFIG34_CURRENT_ELECTION_ADNL_KEY" == "$DIR_CURRENT_ELECTION_ADNL_KEY
         printf "${GREEN}Currently validating well${NO_COLOR}\n"
 fi
 
-#14 - parse my raw address and check with 
+#14 - parse my raw address and check stake reward available for recovery
 REGULAR_RAW_ADDRESS=$(cat ~/ton-keys/$HOSTNAME.addr)
 PARSED_RAW_ADDRESS=$(echo $REGULAR_RAW_ADDRESS | sed 's/^.\{3\}//')
 FINAL_RAW_ADDRESS=$(printf "0x%s" "$PARSED_RAW_ADDRESS")
 MY_COMPUTE_REWARD=$(cd ~/net.ton.dev/ton/build/lite-client && ./lite-client -p ~/ton-keys/liteserver.pub -a 127.0.0.1:3031 -rc "runmethodfull -1:3333333333333333333333333333333333333333333333333333333333333333 compute_returned_stake $FINAL_RAW_ADDRESS" -rc 'quit' 2>/dev/null | awk 'FNR == 5 {print $3}')
 
-if [ "CHECK_ELECTION_STATUS" != 0 ]; then #election open
-        if [ "$MY_ACTIVE_ELECTION_ID" != 0 ] && [ $CHECK_PARTICIPATION == 0 ]; then
+#15 - if election is open, I have participated in ongoing election, but my validator pubkey cannot be found in the validator list, print error msg
+if [ "CHECK_ELECTION_STATUS" != 0 ] && [ "$MY_ACTIVE_ELECTION_ID" != 0 ] && [ $CHECK_PARTICIPATION == 0 ]; then
         printf "${RED}!!!WARNING: ELECTION FAILED!!!\n"
         printf "WARNING: NO STAKES FOUND\n"
         printf "Election ID: "
@@ -111,18 +109,17 @@ if [ "CHECK_ELECTION_STATUS" != 0 ]; then #election open
         printf "ELECTION UNTIL: "
         printf "$UPCOMING_ELECTION_END_HUMANTIME${NO_COLOR}\n"
 
+#16 - if I have not participated in ongoing election, print reminder msg
         elif [ "$MY_ACTIVE_ELECTION_ID" == 0 ]; then
         echo "${RED}Election is now open as of "
         printf "UPCOMING_ELECTION_START_HUMANTIME\n"
         echo "Run validator script before "
         printf "$UPCOMING_ELECTION_END_HUMANTIME${NO_COLOR}\n"
 
-        fi
-
-elif [ "$MY_COMPUTE_REWARD" != 0 ]; then
+        elif [ "$MY_COMPUTE_REWARD" != 0 ]; then
         echo "REQUEST REWARD BACK NOW"
 
-#13 - else, print unknown error msg
+#17 - for all other scenarios, print unknown error msg
 else
         echo "WARNING: Unknown Error"
 
