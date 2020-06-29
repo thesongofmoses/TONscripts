@@ -11,7 +11,6 @@ HALF_PUBKEY=$(cat ~/ton-keys/elections/$HOSTNAME-request-dump2 | grep 'public ke
 FULL_PUBKEY=$(printf "0x%s" "$HALF_PUBKEY")
 DIR_CURRENT_ELECTION_ADNL_KEY=$(cat ~/ton-keys/elections/$HOSTNAME-election-adnl-key | grep  "created new key" | awk '{print $4}')
 
-
 #2 - check if pubkey is participating in current election and get the staked amount
 CHECK_PARTICIPATION=$(cd ~/net.ton.dev/ton/build/lite-client && ./lite-client -p ~/ton-keys/liteserver.pub -a 127.0.0.1:3031 -rc "runmethodfull -1:3333333333333333333333333333333333333333333333333333333333333333 participates_in ${FULL_PUBKEY}" -rc 'quit' 2>/dev/null | awk 'FNR == 5 {print $3}')
 
@@ -90,14 +89,16 @@ fi
 MY_ACTIVE_ELECTION_ID=$(cat ~/ton-keys/elections/active-election-id)
 CHECK_ELECTION_STATUS=$(cd ~/net.ton.dev/ton/build/lite-client && ./lite-client -p ~/ton-keys/liteserver.pub -a 127.0.0.1:3031 -rc "runmethodfull -1:3333333333333333333333333333333333333333333333333333333333333333 active_election_id" -rc 'quit' 2>/dev/null | awk 'FNR == 5 {print $3}')
 
+#13 - check node's participation in the current validation cycle
 if [ "$GETCONFIG34_CURRENT_ELECTION_ADNL_KEY" == "$DIR_CURRENT_ELECTION_ADNL_KEY" ]; then
         printf "${GREEN}Currently validating well${NO_COLOR}\n"
 fi
 
-MY_COMPUTE_REWARD=$(cd ~/net.ton.dev/ton/build/lite-client && ./lite-client -p ~/ton-keys/liteserver.pub -a 127.0.0.1:3031 -rc "runmethodfull -1:3333333333333333333333333333333333333333333333333333333333333333 compute_returned_stake " -rc 'quit' 2>/dev/null | awk 'FNR == 5 {print $3}')
+#14 - parse my raw address and check with 
 REGULAR_RAW_ADDRESS=$(cat ~/ton-keys/$HOSTNAME.addr)
 PARSED_RAW_ADDRESS=$(echo $REGULAR_RAW_ADDRESS | sed 's/^.\{3\}//')
 FINAL_RAW_ADDRESS=$(printf "0x%s" "$PARSED_RAW_ADDRESS")
+MY_COMPUTE_REWARD=$(cd ~/net.ton.dev/ton/build/lite-client && ./lite-client -p ~/ton-keys/liteserver.pub -a 127.0.0.1:3031 -rc "runmethodfull -1:3333333333333333333333333333333333333333333333333333333333333333 compute_returned_stake $FINAL_RAW_ADDRESS" -rc 'quit' 2>/dev/null | awk 'FNR == 5 {print $3}')
 
 if [ "CHECK_ELECTION_STATUS" != 0 ]; then #election open
         if [ "$MY_ACTIVE_ELECTION_ID" != 0 ] && [ $CHECK_PARTICIPATION == 0 ]; then
