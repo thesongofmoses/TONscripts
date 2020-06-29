@@ -1,3 +1,4 @@
+
 #!/bin/bash
 
 #VARIABLES
@@ -55,8 +56,8 @@ NEXT_CYCLE_BEGIN_HUMANTIME=$(date -d @"$UNTIL_TIMESTAMP")
                 #9BB - get network total weight
                 TOTAL_WEIGHT=$(cd ~/net.ton.dev/ton/build/lite-client && ./lite-client -p ~/ton-keys/liteserver.pub -a 127.0.0.1:3031 -rc 'getconfig 36' -rc 'quit' 2>/dev/null | grep 'total_weight' | awk '{print $6}' | tr -d 'total_weight:')
                 ROUNDED_TOTAL_WEIGHT=$(printf "%.10f" $TOTAL_WEIGHT)
-                
- #10 - check if Elector confirms participation in current election and the amount
+
+#10 - check if Elector confirms participation in current election and the amount
 if [ "$ROUNDED_TOKENS" != '0.000000000' ]; then
     printf "${GREEN}---------CURRENT ELECTION---------\n"
         printf "Election ID: "
@@ -113,8 +114,8 @@ if [ "CHECK_ELECTION_STATUS" != 0 ]; then #election open
         printf "UPCOMING_ELECTION_START_HUMANTIME\n"
         echo "Run validator script before "
         printf "$UPCOMING_ELECTION_END_HUMANTIME${NO_COLOR}\n"
-
         fi
+fi
 
 MY_ACTIVE_ELECTION_ID=$(cat ~/ton-keys/elections/active-election-id)
 CHECK_ELECTION_STATUS=$(cd ~/net.ton.dev/ton/build/lite-client && ./lite-client -p ~/ton-keys/liteserver.pub -a 127.0.0.1:3031 -rc "runmethodfull -1:3333333333333333333333333333333333333333333333333333333333333333 active_election_id" -rc 'quit' 2>/dev/null | awk 'FNR == 5 {print $3}')
@@ -139,13 +140,13 @@ if [ "CHECK_ELECTION_STATUS" != 0 ]; then #election open
         printf "ELECTION UNTIL: "
         printf "$UPCOMING_ELECTION_END_HUMANTIME${NO_COLOR}\n"
 
-        elif [ "$MY_ACTIVE_ELECTION_ID" == 0 ]; then
-        echo "${RED}Election is now open as of "
+        fi
+
+elif [ "$MY_ACTIVE_ELECTION_ID" == 0 ]; then
+        echo "${RED}Election is now closed"
         printf "UPCOMING_ELECTION_START_HUMANTIME\n"
         echo "Run validator script before "
-        printf "$UPCOMING_ELECTION_END_HUMANTIME${NO_COLOR}\n"
-
-        fi
+        ## here, put the time for next election since"
 
 elif [ "$MY_COMPUTE_REWARD" != 0 ]; then
         echo "REQUEST REWARD BACK NOW"
@@ -153,5 +154,6 @@ elif [ "$MY_COMPUTE_REWARD" != 0 ]; then
 #13 - else, print unknown error msg
 else
         echo "WARNING: Unknown Error"
-
 fi
+
+
