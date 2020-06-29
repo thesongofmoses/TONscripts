@@ -90,13 +90,23 @@ CHECK_ELECTION_STATUS=$(cd ~/net.ton.dev/ton/build/lite-client && ./lite-client 
 #13 - check node's participation in the current validation cycle
 if [ "$GETCONFIG34_CURRENT_ELECTION_ADNL_KEY" == "$DIR_CURRENT_ELECTION_ADNL_KEY" ]; then
         printf "${GREEN}Currently validating well${NO_COLOR}\n"
+
+## add here elif statement using a previous adnl key to check with getconfig 34 during the transition period
+
 fi
 
 #14 - parse my raw address and check stake reward available for recovery
-REGULAR_RAW_ADDRESS=$(cat ~/ton-keys/$HOSTNAME.addr)
-PARSED_RAW_ADDRESS=$(echo $REGULAR_RAW_ADDRESS | sed 's/^.\{3\}//')
-FINAL_RAW_ADDRESS=$(printf "0x%s" "$PARSED_RAW_ADDRESS")
-MY_COMPUTE_REWARD=$(cd ~/net.ton.dev/ton/build/lite-client && ./lite-client -p ~/ton-keys/liteserver.pub -a 127.0.0.1:3031 -rc "runmethodfull -1:3333333333333333333333333333333333333333333333333333333333333333 compute_returned_stake $FINAL_RAW_ADDRESS" -rc 'quit' 2>/dev/null | awk 'FNR == 5 {print $3}')
+        #14A - get raw address
+        REGULAR_RAW_ADDRESS=$(cat ~/ton-keys/$HOSTNAME.addr)
+
+        #14B - parse raw address
+        PARSED_RAW_ADDRESS=$(echo $REGULAR_RAW_ADDRESS | sed 's/^.\{3\}//')
+
+        #14C - add 0x
+        FINAL_RAW_ADDRESS=$(printf "0x%s" "$PARSED_RAW_ADDRESS")
+
+        #14D - query elector for available rewards
+        MY_COMPUTE_REWARD=$(cd ~/net.ton.dev/ton/build/lite-client && ./lite-client -p ~/ton-keys/liteserver.pub -a 127.0.0.1:3031 -rc "runmethodfull -1:3333333333333333333333333333333333333333333333333333333333333333 compute_returned_stake ${FINAL_RAW_ADDRESS}" -rc 'quit' 2>/dev/null | awk 'FNR == 5 {print $3}')
 
 #15 - if election is open, I have participated in ongoing election, but my validator pubkey cannot be found in the validator list, print error msg
 if [ "CHECK_ELECTION_STATUS" != 0 ] && [ "$MY_ACTIVE_ELECTION_ID" != 0 ] && [ $CHECK_PARTICIPATION == 0 ]; then
