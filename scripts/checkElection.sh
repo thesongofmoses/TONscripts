@@ -1,3 +1,4 @@
+
 #!/bin/bash
 
 #VARIABLES
@@ -81,19 +82,16 @@ elif [ "$GETCONFIG36_CURRENT_ELECTION_ADNL_KEY" == "$DIR_CURRENT_ELECTION_ADNL_K
         echo "---$NEXT_CYCLE_BEGIN_HUMANTIME---"
         echo "---------ELECTED VALIDATOR--------"
         printf "${NO_COLOR}"
-fi
 
 #12 - otherwise, check getconfig 34 with new validator
 MY_ACTIVE_ELECTION_ID=$(cat ~/ton-keys/elections/active-election-id)
 CHECK_ELECTION_STATUS=$(cd ~/net.ton.dev/ton/build/lite-client && ./lite-client -p ~/ton-keys/liteserver.pub -a 127.0.0.1:3031 -rc "runmethodfull -1:3333333333333333333333333333333333333333333333333333333333333333 active_election_id" -rc 'quit' 2>/dev/null | awk 'FNR == 5 {print $3}')
 
 #13 - check node's participation in the current validation cycle
-if [ "$GETCONFIG34_CURRENT_ELECTION_ADNL_KEY" == "$DIR_CURRENT_ELECTION_ADNL_KEY" ]; then
+elif [ "$GETCONFIG34_CURRENT_ELECTION_ADNL_KEY" == "$DIR_CURRENT_ELECTION_ADNL_KEY" ]; then
         printf "${GREEN}Currently validating well${NO_COLOR}\n"
 
 ## add here elif statement using a previous adnl key to check with getconfig 34 during the transition period
-
-fi
 
 #14 - parse my raw address and check stake reward available for recovery
         #14A - get raw address
@@ -109,7 +107,7 @@ fi
         MY_COMPUTE_REWARD=$(cd ~/net.ton.dev/ton/build/lite-client && ./lite-client -p ~/ton-keys/liteserver.pub -a 127.0.0.1:3031 -rc "runmethodfull -1:3333333333333333333333333333333333333333333333333333333333333333 compute_returned_stake ${FINAL_RAW_ADDRESS}" -rc 'quit' 2>/dev/null | awk 'FNR == 5 {print $3}')
 
 #15 - if election is open, I have participated in ongoing election, but my validator pubkey cannot be found in the validator list, print error msg
-if [ "CHECK_ELECTION_STATUS" != 0 ] && [ "$MY_ACTIVE_ELECTION_ID" != 0 ] && [ $CHECK_PARTICIPATION == 0 ]; then
+elif [ "CHECK_ELECTION_STATUS" != 0 ] && [ "$MY_ACTIVE_ELECTION_ID" != 0 ] && [ $CHECK_PARTICIPATION == 0 ]; then
         printf "${RED}!!!WARNING: ELECTION FAILED!!!\n"
         printf "WARNING: NO STAKES FOUND\n"
         printf "Election ID: "
@@ -134,3 +132,4 @@ else
         echo "WARNING: Unknown Error"
 
 fi
+
