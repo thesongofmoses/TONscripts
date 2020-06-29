@@ -1,4 +1,3 @@
-
 #!/bin/bash
 
 #VARIABLES
@@ -109,37 +108,6 @@ if [ "CHECK_ELECTION_STATUS" != 0 ]; then #election open
         printf "ELECTION UNTIL: "
         printf "$UPCOMING_ELECTION_END_HUMANTIME${NO_COLOR}\n"
 
-        elif [ "$MY_ACTIVE_ELECTION_ID" == 0 ]; then
-        echo "${RED}Election is now open as of "
-        printf "UPCOMING_ELECTION_START_HUMANTIME\n"
-        echo "Run validator script before "
-        printf "$UPCOMING_ELECTION_END_HUMANTIME${NO_COLOR}\n"
-        fi
-fi
-
-MY_ACTIVE_ELECTION_ID=$(cat ~/ton-keys/elections/active-election-id)
-CHECK_ELECTION_STATUS=$(cd ~/net.ton.dev/ton/build/lite-client && ./lite-client -p ~/ton-keys/liteserver.pub -a 127.0.0.1:3031 -rc "runmethodfull -1:3333333333333333333333333333333333333333333333333333333333333333 active_election_id" -rc 'quit' 2>/dev/null | awk 'FNR == 5 {print $3}')
-
-if [ "$GETCONFIG34_CURRENT_ELECTION_ADNL_KEY" == "$DIR_CURRENT_ELECTION_ADNL_KEY" ]; then
-        printf "${GREEN}Currently validating well${NO_COLOR}\n"
-fi
-
-MY_COMPUTE_REWARD=$(cd ~/net.ton.dev/ton/build/lite-client && ./lite-client -p ~/ton-keys/liteserver.pub -a 127.0.0.1:3031 -rc "runmethodfull -1:3333333333333333333333333333333333333333333333333333333333333333 compute_returned_stake " -rc 'quit' 2>/dev/null | awk 'FNR == 5 {print $3}')
-REGULAR_RAW_ADDRESS=$(cat ~/ton-keys/$HOSTNAME.addr)
-PARSED_RAW_ADDRESS=$(echo $REGULAR_RAW_ADDRESS | sed 's/^.\{3\}//')
-FINAL_RAW_ADDRESS=$(printf "0x%s" "$PARSED_RAW_ADDRESS")
-
-if [ "CHECK_ELECTION_STATUS" != 0 ]; then #election open
-        if [ "$MY_ACTIVE_ELECTION_ID" != 0 ] && [ $CHECK_PARTICIPATION == 0 ]; then
-        printf "${RED}!!!WARNING: ELECTION FAILED!!!\n"
-        printf "WARNING: NO STAKES FOUND\n"
-        printf "Election ID: "
-        echo "$UPCOMING_ACTIVE_ELECTION_ID"
-        printf "Staked Tokens: "
-        echo "$ROUNDED_TOKENS"
-        printf "ELECTION UNTIL: "
-        printf "$UPCOMING_ELECTION_END_HUMANTIME${NO_COLOR}\n"
-
         fi
 
 elif [ "$MY_ACTIVE_ELECTION_ID" == 0 ]; then
@@ -154,6 +122,3 @@ elif [ "$MY_COMPUTE_REWARD" != 0 ]; then
 #13 - else, print unknown error msg
 else
         echo "WARNING: Unknown Error"
-fi
-
-
