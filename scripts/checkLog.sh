@@ -69,7 +69,7 @@ COUNT_NODELOG_ERROR_POSIXERROR=$(tail -n $TAIL_NUMBER /var/ton-work/node.log | g
 
 #3 - execute commands
 function checkLog () {
-        printf '%s %u; %s %s; %s %s; %s %s; %s %s; %s %s; %s %s; %s %s; %s %s; %s %s; %s %s; %s %s %s %s\n' \
+        printf '%s %u; %s %s; %s %s; %s %s; %s %s; %s %s; %s %s; %s %s; %s %s; %s %s; %s %s; %s %s; %s %s; %s %s; %s %s; %s %s; %s %s; %s %s; %s %s; %s %s; %s %s; %s %s; %s %s; %s %s; %s %s; %s %s; %s %s\n' \
         "$PRINT_UNIXTIME_TEXT" "$PRINT_UNIXTIME_DATE" \
         "$PRINT_TIME_DIFF" "$CHECK_TIME_DIFF" \
         "$PRINT_SLOW" "$COUNT_NODELOG_SLOW" \
@@ -99,4 +99,4 @@ function checkLog () {
         "$PRINT_ERROR_POSIXERROR" "$COUNT_NODELOG_ERROR_POSIXERROR"
 }
 
-checkLog >> ~/ton-logs/count.log
+checkLog >> ~/ton-logs/master.log
