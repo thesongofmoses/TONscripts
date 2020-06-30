@@ -6,6 +6,7 @@ TAIL_NUMBER='20000'
 #1A - print info
 PRINT_UNIXTIME_TEXT=$(printf 'UNIX_TIME:')
 PRINT_UNIXTIME_DATE=$(date +%s)
+PRINT_TIME_DIFF=$(printf 'TIME_DIFF:')
 PRINT_NEW_BLOCK_CREATED=$(printf 'NEW_BLOCK_CREATED:')
 PRINT_APPROVED_CANDIDATE=$(printf 'APPROVED_CANDIDATE:')
 PRINT_REJECTED_CANDIDATE=$(printf 'REJECTED_CANDIDATE:')
@@ -34,6 +35,7 @@ PRINT_ERROR_666=$(printf 'ERROR_-666:')
 PRINT_ERROR_POSIXERROR=$(printf 'POSIXERROR')
 
 #2A - data sorted error msgs from node.log
+CHECK_TIME_DIFF=$(~/net.ton.dev/scripts/check_node_sync_status.sh | awk 'FNR == 14 {print $4}')
 COUNT_NODELOG_NEW_BLOCK_CREATED=$(tail -n $TAIL_NUMBER /var/ton-work/node.log | grep 'new Block created' | wc -l)
 COUNT_NODELOG_APPROVED_CANDIDATE=$(tail -n $TAIL_NUMBER /var/ton-work/node.log | grep 'approved candidate' | wc -l)
 COUNT_NODELOG_REJECTED_CANDIDATE=$(tail -n $TAIL_NUMBER /var/ton-work/node.log | grep 'REJECTED CANDIDATE' | wc -l)
