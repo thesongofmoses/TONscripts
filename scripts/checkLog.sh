@@ -99,4 +99,4 @@ function checkLog () {
         "$PRINT_ERROR_POSIXERROR" "$COUNT_NODELOG_ERROR_POSIXERROR"
 }
 
-checkLog >> ~/ton-logs/master.log
+checkLog >> ~/node.operator/ton-logs/master.log
