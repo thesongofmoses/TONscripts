@@ -9,7 +9,7 @@ CURRENT_BALANCE=$(~/node.operator/scripts/checkBalance.sh | awk '{print $3}')
 BALANCE=$(echo $CURRENT_BALANCE-$BALANCE_BY-10 | bc -l)
 ROUNDED_BALANCE=$(printf "%.0f" $BALANCE)
 
-#final random variables
+#final variables
 SLEEP="$(($RANDOM% $SLEEP_BY))"
 STAKE="$(($RANDOM% $BALANCE_BY+$ROUNDED_BALANCE))"
 
