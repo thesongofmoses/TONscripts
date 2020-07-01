@@ -1,6 +1,6 @@
 #!/bin/bash
 
-CHECK_ENGINE=$(pgrep validator)
+CHECK_ENGINE=$(pgrep -f /home/ton/net.ton.dev/ton/build/validator-engine/validator-engine -C /var/ton-work/etc/ton-global.config.json --db /var/ton-work/db)
 PRINT_UNIXTIME=$(date +%s)
 
 function RESTART () {
@@ -9,7 +9,7 @@ function RESTART () {
         ./run.sh
 }
 
-#if there is no validator-engine process, then execute run.sh
+
 if [ -z "$CHECK_ENGINE" ]; then
         RESTART >> ~/ton-logs/restart.log
 fi
