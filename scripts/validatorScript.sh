@@ -2,7 +2,7 @@
 
 #variable
 BALANCE_BY='1000'
-SLEEP_BY='10000'
+SLEEP_BY='3000'
 
 #fixed variables
 CURRENT_BALANCE=$(~/node.operator/scripts/checkBalance.sh | awk '{print $3}')
