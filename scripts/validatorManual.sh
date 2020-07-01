@@ -23,6 +23,6 @@ BALANCE=$(echo $MY_BALANCE-$BALANCE_BY-10000000000 | bc -l)
 STAKE="$(($RANDOM% $BALANCE_BY+$BALANCE))"
 
 #command
-submitTransaction=$(cd ~/net.ton.dev/tonos-cli/target/release && ./tonos-cli call "$MY_RAW_ADDRESS" submitTransaction "{"\"dest"\":"\"-1:3333333333333333333333333333333333333333333333333333333333333333"\","\"value"\":"$STAKE","\"bounce"\":false,"\"allBalance"\":false,"\"payload"\":"\"$BOC"\"}" --abi ~/net.ton.dev/configs/SafeMultisigWallet.abi.json --sign ~/ton-keys/msig.keys.json)
+submitTransaction=$(cd ~/net.ton.dev/tonos-cli/target/release && ./tonos-cli call "$MY_RAW_ADDRESS" submitTransaction "{"\"dest"\":"\"-1:3333333333333333333333333333333333333333333333333333333333333333"\","\"value"\":"$STAKE","\"bounce"\":false,"\"allBalance"\":false,"\"payload"\":"\"$BOC"\"}" --abi ~/net.ton.dev/configs/SafeMultisigWallet.abi.json --sign ~/ton-keys/msig.keys.json >> ~/node.operator/logs/validator.log)
 
-$ECHO_0_ELECTION && $submitTransaction >> ~/node.operator/logs/validator.log && $ECHO_ID_ELECTION
+$ECHO_0_ELECTION && $submitTransaction && $ECHO_ID_ELECTION
