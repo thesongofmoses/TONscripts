@@ -13,4 +13,4 @@ ROUNDED_BALANCE=$(printf "%.0f" $BALANCE)
 SLEEP="$(($RANDOM% $SLEEP_BY))"
 STAKE="$(($RANDOM% $BALANCE_BY+$ROUNDED_BALANCE))"
 
-sleep $SLEEP && cd ~/net.ton.dev/scripts && ./validator_msig.sh $STAKE >> ~/ton-logs/validator.log
+sleep $SLEEP && cd ~/net.ton.dev/scripts && ./validator_msig.sh $STAKE >> ~/node.operator/logs/validator.log
