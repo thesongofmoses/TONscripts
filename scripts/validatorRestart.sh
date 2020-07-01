@@ -11,5 +11,5 @@ function RESTART () {
 
 
 if [ -z "$CHECK_ENGINE" ]; then
-        RESTART >> ~/ton-logs/restart.log
+        RESTART >> ~/node.operator/logs/restart.log
 fi
