@@ -1,9 +1,9 @@
 #!/bin/bash
 
-. ~/node.operator/configs/master.config
+. ~/node.operator/configs/scripts.config
 
 # print calendar
-echo '--------------ELECTIONS-------------'     
+echo '--------------ELECTIONS-------------'
 echo 'Previous Election'
 printf 'Active Election ID: '
 echo "$PREVIOUS_ACTIVE_ELECTION_ID"
