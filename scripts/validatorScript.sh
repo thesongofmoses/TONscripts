@@ -1,15 +1,15 @@
 #!/bin/bash
 
-#variable
-BALANCE_BY='1000'
-SLEEP_BY='3000'
+. ~/node.operator/configs/scripts.config
 
-#fixed variables
-CURRENT_BALANCE=$(~/node.operator/scripts/checkBalance.sh | awk '{print $3}')
-BALANCE=$(echo $CURRENT_BALANCE-$BALANCE_BY-10 | bc -l)
+#variables
+BALANCE_BY='1000'
+SLEEP_BY='10'
+FEES_RESERVE='10'
+
+BALANCE=$(echo $MY_BALANCE-$BALANCE_BY-$FEES_RESERVE | bc -l)
 ROUNDED_BALANCE=$(printf "%.0f" $BALANCE)
 
-#final variables
 SLEEP="$(($RANDOM% $SLEEP_BY))"
 STAKE="$(($RANDOM% $BALANCE_BY+$ROUNDED_BALANCE))"
 
