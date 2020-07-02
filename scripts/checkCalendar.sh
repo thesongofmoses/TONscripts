@@ -1,7 +1,5 @@
 #!/bin/bash
 
-#!/bin/bash
-
 . ~/node.operator/configs/master.config
 
 # print calendar
