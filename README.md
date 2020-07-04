@@ -8,7 +8,7 @@ sudo apt install -y git && cd && rm -rf ~/node.operator && git clone https://git
 
 2. Import crontab after completion of sync:
 
-crontab ~/node.operator/configs/crontab.config &&
+crontab ~/node.operator/configs/crontab.config
 
 3. For updating without deleting logs:
 
