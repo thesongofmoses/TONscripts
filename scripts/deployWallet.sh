@@ -13,4 +13,5 @@ function deployWallet () {
 SLEEP_BY='3000'
 SLEEP="$(($RANDOM% $SLEEP_BY))"
 
-sleep $SLEEP deployWallet
+sleep $SLEEP && \
+deployWallet
