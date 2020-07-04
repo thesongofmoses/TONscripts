@@ -9,4 +9,8 @@ function deployWallet () {
         cd ~/net.ton.dev/tonos-cli/target/release/ && ./tonos-cli deploy ~/net.ton.dev/ton-labs-contracts/solidity/safemultisig/SafeMultisigWallet.tvc "{"\"owners"\":["\"$FULL_PUBKEY"\"],"\"reqConfirms"\":1}" --abi ~/net.ton.dev/ton-labs-contracts/solidity/safemultisig/SafeMultisigWallet.abi.json --sign ~/ton-keys/msig.keys.json --wc -1
 }
 
-deployWallet
+#3 variable
+SLEEP_BY='3000'
+SLEEP="$(($RANDOM% $SLEEP_BY))"
+
+sleep $SLEEP deployWallet
