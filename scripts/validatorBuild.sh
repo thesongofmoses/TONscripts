@@ -1,7 +1,5 @@
 #!/bin/bash
 
-HOSTNAME=$(cat /etc/hostname)
-
 #backup keys
 mkdir ~/keys.backup && \
 mv ~/ton-keys ~/keys.backup/ton-keys
