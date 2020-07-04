@@ -5,7 +5,7 @@ These scripts are created to help node operators. All the paths used are the def
 
 For first time install:
 
-cd && rm -rf ~/node.operator && git clone https://github.com/thesongofmoses/node.operator.git && chmod +x -R ~/node.operator/scripts && cat ~/node.operator/configs/bashrc.config > ~/.bashrc && source ~/.bashrc && crontab ~/node.operator/configs/crontab.config && rm ~/node.operator/logs/dummy.log && sudo apt install bc
+sudo apt install git && cd && rm -rf ~/node.operator && git clone https://github.com/thesongofmoses/node.operator.git && chmod +x -R ~/node.operator/scripts && cat ~/node.operator/configs/bashrc.config > ~/.bashrc && source ~/.bashrc && crontab ~/node.operator/configs/crontab.config && rm ~/node.operator/logs/dummy.log && sudo apt install bc
 
 For update:
 
