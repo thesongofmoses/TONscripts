@@ -40,8 +40,7 @@ then
                 printf "$NEXT_MY_STAKED_TOKENS\n"
                 printf "Election result at: "
                 printf "$CURRENT_ELECTION_UNTIL_HUMANTIME"
-                printf "-------SUBMISSION CONFIRMED-------"
-                printf "${NO_COLOR}"
+                printf "-------SUBMISSION CONFIRMED-------${NO_COLOR}"
 
         elif [ "$CHECK_ELECTION_SUBMISSION" == 0 ];
         then
@@ -72,7 +71,7 @@ then
 
         elif [ "$CHECK_ELECTION_RESULT" != "$DIR_ELECTION_ADNL_KEY" ] && [ "$CHECK_TRANSITION_STATUS" != "(null)" ];
         then
-                printf "${RED}---------Election failed--------${NO_COLOR}\n"
+                printf "${RED}---------ELECTION FAILED--------${NO_COLOR}\n"
                 printf "Stakes held until"
                 printf "$CURRENT_ELECTION_UNTIL_HUMANTIME"
                 printf "Next election at: "
