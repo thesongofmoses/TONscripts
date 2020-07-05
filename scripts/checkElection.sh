@@ -39,8 +39,7 @@ then
                 printf "Staked Tokens: "
                 printf "$NEXT_MY_STAKED_TOKENS\n"
                 printf "Election result at: "
-                printf "$CURRENT_ELECTION_UNTIL_HUMANTIME"
-                printf "-------SUBMISSION CONFIRMED-------${NO_COLOR}"
+                printf "$CURRENT_ELECTION_UNTIL_HUMANTIME${NO_COLOR}"
 
         elif [ "$CHECK_ELECTION_SUBMISSION" == 0 ];
         then
