@@ -15,11 +15,11 @@ echo ""
 
 echo 'Upcoming Election'
 printf 'Active Election ID: '
-echo "$UPCOMING_ACTIVE_ELECTION_ID"
+echo "$CURRENT_ACTIVE_ELECTION_ID"
 printf "Since:  "
-echo "$UPCOMING_ELECTION_SINCE_HUMANTIME"
+echo "$CURRENT_ELECTION_SINCE_HUMANTIME"
 printf "Until:  "
-echo "$UPCOMING_ELECTION_UNTIL_HUMANTIME"
+echo "$CURRENT_ELECTION_UNTIL_HUMANTIME"
 echo ""
 
 echo 'Next Election'
