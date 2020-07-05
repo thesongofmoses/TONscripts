@@ -37,7 +37,7 @@ then
                 printf "Election ID: "
                 printf "$CURRENT_ACTIVE_ELECTION_ID\n"
                 printf "Staked Tokens: "
-                printf "$STAKED_TOKENS\n"
+                printf "$NEXT_MY_STAKED_TOKENS\n"
                 printf "Election result at: "
                 printf "$CURRENT_ELECTION_UNTIL_HUMANTIME"
                 printf "-------SUBMISSION CONFIRMED-------"
