@@ -38,7 +38,7 @@ then
                 printf "$CURRENT_ACTIVE_ELECTION_ID\n"
                 printf "Staked Tokens: "
                 printf "$NEXT_MY_STAKED_TOKENS${NO_COLOR}\n"
-                printf "$Election result at: "
+                printf "Election result at: "
                 printf "$CURRENT_ELECTION_UNTIL_HUMANTIME\n"
 
         elif [ "$CHECK_ELECTION_SUBMISSION" == 0 ];
