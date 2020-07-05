@@ -3,27 +3,25 @@
 . ~/node.operator/configs/scripts.config
 
 # check validation status
-if [ "$CHECK_ELECTION_STATUS" == 0 ];
+if [ "$CHECK_VALIDATION_STATUS" == "$DIR_ELECTION_ADNL_KEY" ];
 then
-        if [ "$CHECK_VALIDATION_STATUS" == "$DIR_ELECTION_ADNL_KEY" ];
-        then
-                printf "${GREEN}-----VALIDATION CONFIRMED-----\n"
-                printf "Validation until: "
-                printf "$CURRENT_VALIDATION_UNTIL_HUMANTIME\n"
-                printf "Next election at: "
-                printf "$CURRENT_ELECTION_SINCE_HUMANTIME\n"
-                printf "Rewards earned so far: "
-                printf "$CURRENT_MY_BONUS\n"
-                printf "Recoverable at: "
-                printf "$NEXT_ELECTION_SINCE_HUMANTIME${NO_COLOR}\n"
-        else
-                printf "${RED}You are not validating in this cycle\n"
-                printf "It could be because your ADNL election key in keys dir is not right${NO_COLOR}\n"
-                printf "Next election begins: "
-                printf "$CURRENT_ELECTION_SINCE_HUMANTIME\n"
+        printf "${GREEN}-----VALIDATION CONFIRMED-----\n"
+        printf "Validation until: "
+        printf "$CURRENT_VALIDATION_UNTIL_HUMANTIME\n"
+        printf "Next election at: "
+        printf "$CURRENT_ELECTION_SINCE_HUMANTIME\n"
+        printf "Rewards earned so far: "
+        printf "$CURRENT_MY_BONUS\n"
+        printf "Recoverable at: "
+        printf "$NEXT_ELECTION_SINCE_HUMANTIME${NO_COLOR}\n"
+else
+        printf "${RED}------VALIDATION UNCONFIRMED-----\n"
+        printf "This error could've been caused by unmatching ADNL record${NO_COLOR}\n"
+        printf "Next election begins: "
+        printf "$CURRENT_ELECTION_SINCE_HUMANTIME\n"
 
-        fi
 fi
+
 
 ##### how to if election started so adnl key changed but want to check if currently validating
 
