@@ -33,13 +33,13 @@ if [ "$CHECK_ELECTION_STATUS" != 0 ];
 then
         if [ "$CHECK_ELECTION_SUBMISSION" != 0 ];
         then
-                printf "${GREEN}------SUBMISSION CONFIRMED------\n"
+                printf "${GREEN}--------SUBMISSION CONFIRMED--------\n"
                 printf "Election ID: "
                 printf "$CURRENT_ACTIVE_ELECTION_ID\n"
                 printf "Staked Tokens: "
                 printf "$NEXT_MY_STAKED_TOKENS\n"
                 printf "Election result at: "
-                printf "$CURRENT_ELECTION_UNTIL_HUMANTIME${NO_COLOR}"
+                printf "$CURRENT_ELECTION_UNTIL_HUMANTIME${NO_COLOR}\n"
 
         elif [ "$CHECK_ELECTION_SUBMISSION" == 0 ];
         then
