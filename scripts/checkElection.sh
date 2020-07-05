@@ -15,10 +15,10 @@ then
         printf "Recoverable at: "
         printf "$NEXT_ELECTION_SINCE_HUMANTIME${NO_COLOR}\n"
 else
-        printf "${LIGHT_RED}---CURRENTLY NOT VALIDATING---\n"
+        printf "${RED}---CURRENTLY NOT VALIDATING---\n"
         printf "This error could've been caused by unmatching ADNL record${NO_COLOR}\n"
-        printf "Next election begins: "
-        printf "${YELLOW}$CURRENT_ELECTION_SINCE_HUMANTIME${NO_COLOR}\n"
+        printf "${YELLOW}Next election begins: "
+        printf "$CURRENT_ELECTION_SINCE_HUMANTIME${NO_COLOR}\n"
 
 fi
 
