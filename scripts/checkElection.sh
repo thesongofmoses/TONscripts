@@ -5,7 +5,7 @@
 # check validation status
 if [ "$CHECK_VALIDATION_STATUS" == "$DIR_ELECTION_ADNL_KEY" ];
 then
-        printf "${GREEN}-----VALIDATION CONFIRMED-----\n"
+        printf "${GREEN}---CURRENTLY VALIDATING---\n"
         printf "Validation until: "
         printf "$CURRENT_VALIDATION_UNTIL_HUMANTIME\n"
         printf "Next election at: "
@@ -15,10 +15,10 @@ then
         printf "Recoverable at: "
         printf "$NEXT_ELECTION_SINCE_HUMANTIME${NO_COLOR}\n"
 else
-        printf "${RED}------VALIDATION UNCONFIRMED-----\n"
+        printf "${LIGHT_RED}---CURRENTLY NOT VALIDATING---\n"
         printf "This error could've been caused by unmatching ADNL record${NO_COLOR}\n"
         printf "Next election begins: "
-        printf "$CURRENT_ELECTION_SINCE_HUMANTIME\n"
+        printf "${YELLOW}$CURRENT_ELECTION_SINCE_HUMANTIME${NO_COLOR}\n"
 
 fi
 
@@ -35,9 +35,9 @@ then
                 printf "Election ID: "
                 printf "$CURRENT_ACTIVE_ELECTION_ID\n"
                 printf "Staked Tokens: "
-                printf "$NEXT_MY_STAKED_TOKENS${NO_COLOR}\n"
+                printf "$NEXT_MY_STAKED_TOKENS$\n"
                 printf "Election result at: "
-                printf "$CURRENT_ELECTION_UNTIL_HUMANTIME\n"
+                printf "$CURRENT_ELECTION_UNTIL_HUMANTIME${NO_COLOR}\n"
 
         elif [ "$CHECK_ELECTION_SUBMISSION" == 0 ];
         then
