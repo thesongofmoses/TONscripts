@@ -113,9 +113,9 @@ then
         then
                 printf "${GREEN}-----------ELECTED VALIDATOR-----------\n"
                 printf "Election result: SUCCESS\n"
-                printf "${YELLOW}Validation starts: "
-                printf "$NEXT_VALIDATION_SINCE_HUMANTIME\n"
-                printf "Next election opens: "
+                printf "$Validation starts: "
+                printf "$NEXT_VALIDATION_SINCE_HUMANTIME{NO_COLOR}\n"
+                printf "${YELLOW}Next election opens: "
                 printf "$NEXT_ELECTION_SINCE_HUMANTIME${NO_COLOR}\n"
 
         elif [ "$CHECK_ELECTION_RESULT" != "$NEW_ADNL_KEY" ] && [ "$CHECK_TRANSITION_STATUS" != "(null)" ];
