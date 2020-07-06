@@ -5,7 +5,7 @@
 # check validation status
 if [ "$CHECK_ELECTION_STATUS" == 0 ];
 then
-        if [ "$CHECK_VALIDATION_STATUS_NEW_ADNL_KEY" == "$NEW_ADNL_KEY" ];
+        if [ "$CHECK_VALIDATION_STATUS_NEW_ADNL_KEY" == "$DIR_ELECTION_ADNL_KEY" ];
         then
                 printf "${BLUE}---CURRENTLY VALIDATING---\n"
                 printf "Validation until: "
@@ -97,7 +97,7 @@ fi
 ## after election ends
 if [ "$CHECK_ELECTION_STATUS" == 0 ];
 then
-        if [ "$CHECK_ELECTION_RESULT" == "$NEW_ADNL_KEY" ];
+        if [ "$CHECK_ELECTION_RESULT" == "$DIR_ELECTION_ADNL_KEY" ];
         then
                 printf "${GREEN}------ELECTED VALIDATOR------\n"
                 printf "Election closed\n"
@@ -110,7 +110,7 @@ then
                 printf "Recoverable at: "
                 printf "$NEXT_ELECTION_SINCE_HUMANTIME${NO_COLOR}\n"
 
-        elif [ "$CHECK_ELECTION_RESULT" != "$NEW_ADNL_KEY" ] && [ "$CHECK_TRANSITION_STATUS" != "(null)" ];
+        elif [ "$CHECK_ELECTION_RESULT" != "$DIR_ELECTION_ADNL_KEY" ] && [ "$CHECK_TRANSITION_STATUS" != "(null)" ];
         then
                 printf "${RED}---------ELECTION FAILED--------${NO_COLOR}\n"
                 printf "Stakes held until"
