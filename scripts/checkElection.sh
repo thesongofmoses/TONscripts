@@ -26,7 +26,7 @@ fi
 
 if [ "$CHECK_ELECTION_STATUS" != 0 ];
 then
-        if [ "$CHECK_VALIDATION_STATUS_PREVIOUS_ADNL_KEY" == "PREVIOUS_ADNL_KEY" ];
+        if [ "$CHECK_VALIDATION_STATUS_PREVIOUS_ADNL_KEY" == "$PREVIOUS_ADNL_KEY" ];
         then
                 printf "${GREEN}---CURRENTLY VALIDATING---\n"
                 printf "Validation until: "
@@ -46,7 +46,7 @@ then
 fi
 
 if [ "$CHECK_TRANSITION_STATUS" != "(null)" ];
-        if [ "$CHECK_VALIDATION_STATUS_PREVIOUS_ADNL_KEY" == "PREVIOUS_ADNL_KEY" ];
+        if [ "$CHECK_VALIDATION_STATUS_PREVIOUS_ADNL_KEY" == "$PREVIOUS_ADNL_KEY" ];
         then
                 printf "${GREEN}---CURRENTLY VALIDATING---\n"
                 printf "Validation until: "
