@@ -110,7 +110,7 @@ then
                 printf "Next election opens: "
                 printf "$NEXT_ELECTION_SINCE_HUMANTIME\n"
                 printf "Expected Reward Stake: "
-                printf "$EXPECTED_TOTAL_BONUS\n"
+                printf "$EXPECTED_MY_TOTAL_BONUS\n"
                 printf "Expected Interest Rate: "
                 printf "$EXPECTED_INTEREST_RATE\n"
                 printf "Recoverable at: "
