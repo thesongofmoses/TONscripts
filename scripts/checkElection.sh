@@ -7,7 +7,7 @@ if [ "$CHECK_ELECTION_STATUS" == 0 ];
 then
         if [ "$CHECK_VALIDATION_STATUS_NEW_ADNL_KEY" == "$DIR_ELECTION_ADNL_KEY" ];
         then
-                printf "${BLUE}---CURRENTLY VALIDATING---\n"
+                printf "${CYAN}---CURRENTLY VALIDATING---\n"
                 printf "Validation until: "
                 printf "$CURRENT_VALIDATION_UNTIL_HUMANTIME\n"
                 printf "Next election at: "
@@ -28,7 +28,7 @@ if [ "$CHECK_ELECTION_STATUS" != 0 ];
 then
         if [ "$CHECK_VALIDATION_STATUS_PREVIOUS_ADNL_KEY" == "$PREVIOUS_ADNL_KEY" ];
         then
-                printf "${BLUE}---CURRENTLY VALIDATING---\n"
+                printf "${CYAN}---CURRENTLY VALIDATING---\n"
                 printf "Validation until: "
                 printf "$CURRENT_VALIDATION_UNTIL_HUMANTIME\n"
                 printf "Next election at: "
@@ -49,7 +49,7 @@ if [ "$CHECK_TRANSITION_STATUS" != "(null)" ];
 then
         if [ "$CHECK_VALIDATION_STATUS_PREVIOUS_ADNL_KEY" == "$PREVIOUS_ADNL_KEY" ];
         then
-                printf "${BLUE}---CURRENTLY VALIDATING---\n"
+                printf "${CYAN}---CURRENTLY VALIDATING---\n"
                 printf "Validation until: "
                 printf "$CURRENT_VALIDATION_UNTIL_HUMANTIME\n"
                 printf "Next election at: "
