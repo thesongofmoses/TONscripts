@@ -3,7 +3,7 @@
 . ~/node.operator/configs/scripts.config
 
 # check validation status
-if [ "$CHECK_ELECTION_STATUS" == 0 ];
+if [ "$CHECK_ELECTION_STATUS" == 0 ] && [ "$CHECK_TRANSITION_STATUS" == "(null)" ];
 then
         if [ "$CHECK_VALIDATION_STATUS_NEW_ADNL_KEY" == "$DIR_ELECTION_ADNL_KEY" ];
         then
