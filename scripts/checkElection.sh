@@ -5,7 +5,7 @@
 # check validation status
 if [ "$CHECK_ELECTION_STATUS" == 0 ] && [ "$CHECK_TRANSITION_STATUS" == "(null)" ];
 then
-        if [ "$CHECK_VALIDATION_STATUS_NEW_ADNL_KEY" == "$DIR_ELECTION_ADNL_KEY" ];
+        if [ "$CHECK_VALIDATION_STATUS_NEW_ADNL_KEY" == "$NEW_ADNL_KEY" ];
         then
                 printf "${CYAN}---CURRENTLY VALIDATING---\n"
                 printf "Validation until: "
@@ -16,6 +16,8 @@ then
                 printf "$CURRENT_MY_BONUS\n"
                 printf "Recoverable at: "
                 printf "$NEXT_ELECTION_SINCE_HUMANTIME${NO_COLOR}\n"
+                printf "${YELLOW}Next election begins: "
+                printf "$CURRENT_ELECTION_SINCE_HUMANTIME${NO_COLOR}\n"
         else
                 printf "${RED}---CURRENTLY NOT VALIDATING---\n"
                 printf "This error could've been caused by unmatching ADNL record${NO_COLOR}\n"
@@ -34,9 +36,11 @@ then
                 printf "Next election at: "
                 printf "$CURRENT_ELECTION_SINCE_HUMANTIME\n"
                 printf "Rewards earned so far: "
-                printf "$CURRENT_MY_BONUS\n"
+                printf "$CURRENT_MY_BONUS_TRANSITION\n"
                 printf "Recoverable at: "
                 printf "$NEXT_ELECTION_SINCE_HUMANTIME${NO_COLOR}\n"
+                printf "${YELLOW}Next election begins: "
+                printf "$CURRENT_ELECTION_SINCE_HUMANTIME${NO_COLOR}\n"
         else
                 printf "${RED}---CURRENTLY NOT VALIDATING---\n"
                 printf "This error could've been caused by unmatching ADNL record${NO_COLOR}\n"
@@ -55,9 +59,11 @@ then
                 printf "Next election at: "
                 printf "$CURRENT_ELECTION_SINCE_HUMANTIME\n"
                 printf "Rewards earned so far: "
-                printf "$CURRENT_MY_BONUS\n"
+                printf "$CURRENT_MY_BONUS_TRANSITION\n"
                 printf "Recoverable at: "
                 printf "$NEXT_ELECTION_SINCE_HUMANTIME${NO_COLOR}\n"
+                printf "${YELLOW}Next election begins: "
+                printf "$CURRENT_ELECTION_SINCE_HUMANTIME${NO_COLOR}\n"
         else
                 printf "${RED}---CURRENTLY NOT VALIDATING---\n"
                 printf "This error could've been caused by unmatching ADNL record${NO_COLOR}\n"
