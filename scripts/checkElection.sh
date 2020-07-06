@@ -2,7 +2,7 @@
 
 . ~/node.operator/configs/scripts.config
 
-# check validation status
+#CHECK VALIDATION STATUS
 if [ "$CHECK_ELECTION_STATUS" == 0 ] && [ "$CHECK_TRANSITION_STATUS" == "(null)" ];
 then
         if [ "$CHECK_VALIDATION_STATUS_NEW_ADNL_KEY" == "$NEW_ADNL_KEY" ];
@@ -73,10 +73,7 @@ then
 fi
 
 
-##### how to if election started so adnl key changed but want to check if currently validating
-
-#2 check election status
-## during election
+#CHECK ELECTION STATUS
 if [ "$CHECK_ELECTION_STATUS" != 0 ];
 then
         if [ "$CHECK_ELECTION_SUBMISSION" != 0 ];
@@ -106,7 +103,6 @@ then
         fi
 fi
 
-## after election ends
 if [ "$CHECK_ELECTION_STATUS" == 0 ];
 then
         if [ "$CHECK_ELECTION_RESULT" == "$NEW_ADNL_KEY" ];
