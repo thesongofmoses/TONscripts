@@ -13,7 +13,7 @@ fi
 
 if [ "$TEST_VALIDATION_PREVIOUS_ADNL_KEY" == "$PREVIOUS_ADNL_KEY" ];
 then
-        echo "past adnl key is n-3
+        echo "past adnl key is n-3"
 else
         echo "try n-4?"
 fi
