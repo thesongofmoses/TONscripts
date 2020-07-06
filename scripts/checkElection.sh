@@ -7,7 +7,7 @@ if [ "$CHECK_ELECTION_STATUS" == 0 ] && [ "$CHECK_TRANSITION_STATUS" == "(null)"
 then
         if [ "$CHECK_VALIDATION_STATUS_NEW_ADNL_KEY" == "$NEW_ADNL_KEY" ];
         then
-                printf "${CYAN}---CURRENTLY VALIDATING---\n"
+                printf "${CYAN}--------CURRENTLY VALIDATING--------\n"
                 printf "Validation until: "
                 printf "$CURRENT_VALIDATION_UNTIL_HUMANTIME\n"
                 printf "Next election at: "
@@ -19,7 +19,7 @@ then
                 printf "${YELLOW}Next election begins: "
                 printf "$CURRENT_ELECTION_SINCE_HUMANTIME${NO_COLOR}\n"
         else
-                printf "${RED}---CURRENTLY NOT VALIDATING---\n"
+                printf "${RED}--------CURRENTLY NOT VALIDATING--------\n"
                 printf "This error could've been caused by unmatching ADNL record${NO_COLOR}\n"
                 printf "${YELLOW}Next election begins: "
                 printf "$CURRENT_ELECTION_SINCE_HUMANTIME${NO_COLOR}\n"
@@ -30,7 +30,7 @@ if [ "$CHECK_ELECTION_STATUS" != 0 ];
 then
         if [ "$CHECK_VALIDATION_STATUS_PREVIOUS_ADNL_KEY" == "$PREVIOUS_ADNL_KEY" ];
         then
-                printf "${CYAN}---CURRENTLY VALIDATING---\n"
+                printf "${CYAN}--------CURRENTLY VALIDATING--------\n"
                 printf "Validation until: "
                 printf "$CURRENT_VALIDATION_UNTIL_HUMANTIME\n"
                 printf "Next election at: "
@@ -42,7 +42,7 @@ then
                 printf "${YELLOW}Next election begins: "
                 printf "$CURRENT_ELECTION_SINCE_HUMANTIME${NO_COLOR}\n"
         else
-                printf "${RED}---CURRENTLY NOT VALIDATING---\n"
+                printf "${RED}--------CURRENTLY NOT VALIDATING--------\n"
                 printf "This error could've been caused by unmatching ADNL record${NO_COLOR}\n"
                 printf "${YELLOW}Next election begins: "
                 printf "$CURRENT_ELECTION_SINCE_HUMANTIME${NO_COLOR}\n"
@@ -53,7 +53,7 @@ if [ "$CHECK_TRANSITION_STATUS" != "(null)" ];
 then
         if [ "$CHECK_VALIDATION_STATUS_PREVIOUS_ADNL_KEY" == "$PREVIOUS_ADNL_KEY" ];
         then
-                printf "${CYAN}---CURRENTLY VALIDATING---\n"
+                printf "${CYAN}--------CURRENTLY VALIDATING--------\n"
                 printf "Validation until: "
                 printf "$CURRENT_VALIDATION_UNTIL_HUMANTIME\n"
                 printf "Next election at: "
@@ -65,7 +65,7 @@ then
                 printf "${YELLOW}Next election begins: "
                 printf "$CURRENT_ELECTION_SINCE_HUMANTIME${NO_COLOR}\n"
         else
-                printf "${RED}---CURRENTLY NOT VALIDATING---\n"
+                printf "${RED}--------CURRENTLY NOT VALIDATING--------\n"
                 printf "This error could've been caused by unmatching ADNL record${NO_COLOR}\n"
                 printf "${YELLOW}Next election begins: "
                 printf "$CURRENT_ELECTION_SINCE_HUMANTIME${NO_COLOR}\n"
@@ -81,7 +81,7 @@ if [ "$CHECK_ELECTION_STATUS" != 0 ];
 then
         if [ "$CHECK_ELECTION_SUBMISSION" != 0 ];
         then
-                printf "${GREEN}--------SUBMISSION CONFIRMED--------\n"
+                printf "${GREEN}----------SUBMISSION CONFIRMED----------\n"
                 printf "Election ID: "
                 printf "$CURRENT_ACTIVE_ELECTION_ID\n"
                 printf "Staked Tokens: "
@@ -91,7 +91,7 @@ then
 
         elif [ "$CHECK_ELECTION_SUBMISSION" == 0 ];
         then
-                printf "${RED}----SUBMISSION UNCONFIRMED----\n"
+                printf "${RED}---------SUBMISSION UNCONFIRMED---------\n"
                 printf "WARNING: NO STAKES FOUND\n"
                 printf "Election ID: "
                 printf "$CURRENT_ACTIVE_ELECTION_ID"
@@ -105,7 +105,7 @@ if [ "$CHECK_ELECTION_STATUS" == 0 ];
 then
         if [ "$CHECK_ELECTION_RESULT" == "$DIR_ELECTION_ADNL_KEY" ];
         then
-                printf "${GREEN}------ELECTED VALIDATOR------\n"
+                printf "${GREEN}-----------ELECTED VALIDATOR-----------\n"
                 printf "Election closed\n"
                 printf "Next election opens: "
                 printf "$NEXT_ELECTION_SINCE_HUMANTIME\n"
@@ -118,7 +118,7 @@ then
 
         elif [ "$CHECK_ELECTION_RESULT" != "$DIR_ELECTION_ADNL_KEY" ] && [ "$CHECK_TRANSITION_STATUS" != "(null)" ];
         then
-                printf "${RED}---------ELECTION FAILED--------${NO_COLOR}\n"
+                printf "${RED}-----------ELECTION FAILED----------${NO_COLOR}\n"
                 printf "Stakes held until"
                 printf "$CURRENT_ELECTION_UNTIL_HUMANTIME"
                 printf "Next election at: "
