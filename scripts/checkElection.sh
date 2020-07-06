@@ -3,23 +3,66 @@
 . ~/node.operator/configs/scripts.config
 
 # check validation status
-if [ "$CHECK_VALIDATION_STATUS" == "$DIR_ELECTION_ADNL_KEY" ];
+if [ "$CHECK_ELECTION_STATUS" == 0 ];
 then
-        printf "${GREEN}---CURRENTLY VALIDATING---\n"
-        printf "Validation until: "
-        printf "$CURRENT_VALIDATION_UNTIL_HUMANTIME\n"
-        printf "Next election at: "
-        printf "$CURRENT_ELECTION_SINCE_HUMANTIME\n"
-        printf "Rewards earned so far: "
-        printf "$CURRENT_MY_BONUS\n"
-        printf "Recoverable at: "
-        printf "$NEXT_ELECTION_SINCE_HUMANTIME${NO_COLOR}\n"
-else
-        printf "${RED}---CURRENTLY NOT VALIDATING---\n"
-        printf "This error could've been caused by unmatching ADNL record${NO_COLOR}\n"
-        printf "${YELLOW}Next election begins: "
-        printf "$CURRENT_ELECTION_SINCE_HUMANTIME${NO_COLOR}\n"
+        if [ "$CHECK_VALIDATION_STATUS_NEW_ADNL_KEY" == "$NEW_ADNL_KEY" ];
+        then
+                printf "${GREEN}---CURRENTLY VALIDATING---\n"
+                printf "Validation until: "
+                printf "$CURRENT_VALIDATION_UNTIL_HUMANTIME\n"
+                printf "Next election at: "
+                printf "$CURRENT_ELECTION_SINCE_HUMANTIME\n"
+                printf "Rewards earned so far: "
+                printf "$CURRENT_MY_BONUS\n"
+                printf "Recoverable at: "
+                printf "$NEXT_ELECTION_SINCE_HUMANTIME${NO_COLOR}\n"
+        else
+                printf "${RED}---CURRENTLY NOT VALIDATING---\n"
+                printf "This error could've been caused by unmatching ADNL record${NO_COLOR}\n"
+                printf "${YELLOW}Next election begins: "
+                printf "$CURRENT_ELECTION_SINCE_HUMANTIME${NO_COLOR}\n"
+        fi
+fi
 
+if [ "$CHECK_ELECTION_STATUS" != 0 ];
+then
+        if [ "$CHECK_VALIDATION_STATUS_PREVIOUS_ADNL_KEY" == "PREVIOUS_ADNL_KEY" ];
+        then
+                printf "${GREEN}---CURRENTLY VALIDATING---\n"
+                printf "Validation until: "
+                printf "$CURRENT_VALIDATION_UNTIL_HUMANTIME\n"
+                printf "Next election at: "
+                printf "$CURRENT_ELECTION_SINCE_HUMANTIME\n"
+                printf "Rewards earned so far: "
+                printf "$CURRENT_MY_BONUS\n"
+                printf "Recoverable at: "
+                printf "$NEXT_ELECTION_SINCE_HUMANTIME${NO_COLOR}\n"
+        else
+                printf "${RED}---CURRENTLY NOT VALIDATING---\n"
+                printf "This error could've been caused by unmatching ADNL record${NO_COLOR}\n"
+                printf "${YELLOW}Next election begins: "
+                printf "$CURRENT_ELECTION_SINCE_HUMANTIME${NO_COLOR}\n"
+        fi
+fi
+
+if [ "$CHECK_TRANSITION_STATUS" != "(null)" ];
+        if [ "$CHECK_VALIDATION_STATUS_PREVIOUS_ADNL_KEY" == "PREVIOUS_ADNL_KEY" ];
+        then
+                printf "${GREEN}---CURRENTLY VALIDATING---\n"
+                printf "Validation until: "
+                printf "$CURRENT_VALIDATION_UNTIL_HUMANTIME\n"
+                printf "Next election at: "
+                printf "$CURRENT_ELECTION_SINCE_HUMANTIME\n"
+                printf "Rewards earned so far: "
+                printf "$CURRENT_MY_BONUS\n"
+                printf "Recoverable at: "
+                printf "$NEXT_ELECTION_SINCE_HUMANTIME${NO_COLOR}\n"
+        else
+                printf "${RED}---CURRENTLY NOT VALIDATING---\n"
+                printf "This error could've been caused by unmatching ADNL record${NO_COLOR}\n"
+                printf "${YELLOW}Next election begins: "
+                printf "$CURRENT_ELECTION_SINCE_HUMANTIME${NO_COLOR}\n"
+        fi
 fi
 
 
@@ -53,7 +96,7 @@ fi
 ## after election ends
 if [ "$CHECK_ELECTION_STATUS" == 0 ];
 then
-        if [ "$CHECK_ELECTION_RESULT" == "$DIR_ELECTION_ADNL_KEY" ];
+        if [ "$CHECK_ELECTION_RESULT" == "$NEW_ADNL_KEY" ];
         then
                 printf "${GREEN}------ELECTED VALIDATOR------\n"
                 printf "Election closed\n"
@@ -66,7 +109,7 @@ then
                 printf "Recoverable at: "
                 printf "$NEXT_ELECTION_SINCE_HUMANTIME${NO_COLOR}\n"
 
-        elif [ "$CHECK_ELECTION_RESULT" != "$DIR_ELECTION_ADNL_KEY" ] && [ "$CHECK_TRANSITION_STATUS" != "(null)" ];
+        elif [ "$CHECK_ELECTION_RESULT" != "$NEW_ADNL_KEY" ] && [ "$CHECK_TRANSITION_STATUS" != "(null)" ];
         then
                 printf "${RED}---------ELECTION FAILED--------${NO_COLOR}\n"
                 printf "Stakes held until"
