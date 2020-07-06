@@ -86,6 +86,12 @@ then
                 printf "$CURRENT_ACTIVE_ELECTION_ID\n"
                 printf "Staked Tokens: "
                 printf "$NEXT_MY_STAKED_TOKENS$\n"
+                printf "Expected Reward Stake: "
+                printf "$EXPECTED_MY_TOTAL_BONUS\n"
+                printf "Expected Interest Rate: "
+                printf "$EXPECTED_INTEREST_RATE\n"
+                printf "Recoverable at: "
+                printf "$NEXT_ELECTION_SINCE_HUMANTIME${NO_COLOR}\n"
                 printf "Election result at: "
                 printf "$CURRENT_ELECTION_UNTIL_HUMANTIME${NO_COLOR}\n"
 
@@ -107,14 +113,10 @@ then
         then
                 printf "${GREEN}-----------ELECTED VALIDATOR-----------\n"
                 printf "Election closed\n"
+                printf "Validation starts: "
+                printf "$NEXT_VALIDATION_SINCE_HUMANTIME\n"
                 printf "Next election opens: "
                 printf "$NEXT_ELECTION_SINCE_HUMANTIME\n"
-                printf "Expected Reward Stake: "
-                printf "$EXPECTED_MY_TOTAL_BONUS\n"
-                printf "Expected Interest Rate: "
-                printf "$EXPECTED_INTEREST_RATE\n"
-                printf "Recoverable at: "
-                printf "$NEXT_ELECTION_SINCE_HUMANTIME${NO_COLOR}\n"
 
         elif [ "$CHECK_ELECTION_RESULT" != "$NEW_ADNL_KEY" ] && [ "$CHECK_TRANSITION_STATUS" != "(null)" ];
         then
