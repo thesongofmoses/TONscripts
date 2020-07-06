@@ -46,6 +46,7 @@ then
 fi
 
 if [ "$CHECK_TRANSITION_STATUS" != "(null)" ];
+then
         if [ "$CHECK_VALIDATION_STATUS_PREVIOUS_ADNL_KEY" == "$PREVIOUS_ADNL_KEY" ];
         then
                 printf "${GREEN}---CURRENTLY VALIDATING---\n"
