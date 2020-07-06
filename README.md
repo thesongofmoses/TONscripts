@@ -7,6 +7,7 @@ These scripts are created to help node operators. All the paths used are the def
 1. INITIAL INSTALL
 Install dependencies and download/setup repo
 
+	
 	$ sudo apt install -y git && cd && rm -rf ~/node.operator && git clone https://github.com/thesongofmoses/node.operator.git && chmod +x -R ~/node.operator/scripts && cat ~/node.operator/configs/bashrc.config > ~/.bashrc && source ~/.bashrc && sudo apt install bc
 
 Import crontab after completion of sync
