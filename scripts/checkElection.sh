@@ -5,7 +5,7 @@
 #CHECK VALIDATION STATUS
 if [ "$CHECK_ELECTION_STATUS" == 0 ] && [ "$CHECK_TRANSITION_STATUS" == "(null)" ];
 then
-        if [ "$CHECK_VALIDATION_STATUS_NEW_ADNL_KEY" == "$NEW_ADNL_KEY" ];
+        if [ "$CHECK_VALIDATION_STATUS_NEW_ADNL_KEY" == "$NEW_ADNL_KEY" ] || [ "$CHECK_VALIDATION_STATUS_SECOND_NEW_ADNL_KEY" == "$SECOND_NEW_ADNL_KEY" ];
         then
                 printf "${CYAN}-------------CURRENTLY VALIDATING-------------\n"
                 printf "Validation Until: "
@@ -105,7 +105,7 @@ fi
 
 if [ "$CHECK_ELECTION_STATUS" == 0 ] && [ "$CHECK_TRANSITION_STATUS" != "(null)" ];
 then
-        if [ "$CHECK_ELECTION_RESULT" == "$NEW_ADNL_KEY" ];
+        if [ "$CHECK_ELECTION_RESULT" == "$NEW_ADNL_KEY" ] || [ "$CHECK_ELECTION_RESULT" == "$SECOND_NEW_ADNL_KEY" ];
         then
                 printf "${GREEN}----------------ELECTED VALIDATOR----------------\n"
                 printf "Election Result: ${GREEN_BACKGROUND}${BLUE}SUCCESS${NO_COLOR}\n"
@@ -113,9 +113,7 @@ then
                 printf "$NEXT_VALIDATION_SINCE_HUMANTIME${NO_COLOR}\n"
                 printf "${YELLOW}Next Election: "
                 printf "$NEXT_ELECTION_SINCE_HUMANTIME${NO_COLOR}\n"
-
-        elif [ "$CHECK_ELECTION_RESULT" != "$NEW_ADNL_KEY" ];
-        then
+        else
                 printf "${RED}----------------ELECTION FAILED---------------${NO_COLOR}\n"
                 printf "${YELLOW}Stakes Held Until"
                 printf "$CURRENT_ELECTION_UNTIL_HUMANTIME"
