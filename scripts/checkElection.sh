@@ -89,7 +89,7 @@ then
                 printf "$EXPECTED_INTEREST_RATE\n"
                 printf "Recoverable: "
                 printf "$NEXT_ELECTION_SINCE_HUMANTIME${NO_COLOR}\n"
-                printf "Election Result: "
+                printf "${YELLOW}Election Result: "
                 printf "$CURRENT_ELECTION_UNTIL_HUMANTIME${NO_COLOR}\n"
 
         elif [ "$CHECK_ELECTION_SUBMISSION" == 0 ];
