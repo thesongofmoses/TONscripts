@@ -97,7 +97,7 @@ then
                 printf "${RED}--------------SUBMISSION UNCONFIRMED--------------\n"
                 printf "WARNING: NO STAKES FOUND\n"
                 printf "Election ID: "
-                printf "$CURRENT_ACTIVE_ELECTION_ID"
+                printf "$CURRENT_ACTIVE_ELECTION_ID\n"
                 printf "Election Until: "
                 printf "$CURRENT_ELECTION_UNTIL_HUMANTIME${NO_COLOR}\n"
         fi
