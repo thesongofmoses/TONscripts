@@ -3,9 +3,9 @@
 . ~/node.operator/configs/scripts.config
 
 #variables
-BALANCE_BY='1000'
+BALANCE_BY='10'
 SLEEP_BY='3000'
-FEES_RESERVE='10'
+FEES_RESERVE='5'
 
 BALANCE=$(echo $MY_BALANCE-$BALANCE_BY-$FEES_RESERVE | bc -l)
 ROUNDED_BALANCE=$(printf "%.0f" $BALANCE)
