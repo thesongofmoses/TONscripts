@@ -117,10 +117,10 @@ then
         elif [ "$CHECK_ELECTION_RESULT" != "$NEW_ADNL_KEY" ];
         then
                 printf "${RED}----------------ELECTION FAILED---------------${NO_COLOR}\n"
-                printf "Stakes Held Until"
+                printf "${YELLOW}Stakes Held Until"
                 printf "$CURRENT_ELECTION_UNTIL_HUMANTIME"
                 printf "Next Election: "
-                printf "$NEXT_ELECTION_SINCE_TIME"
+                printf "$NEXT_ELECTION_SINCE_HUMANTIME${NO_COLOR}\n"
         fi
 fi
 
