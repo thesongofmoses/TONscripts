@@ -105,7 +105,7 @@ fi
 
 if [ "$CHECK_ELECTION_STATUS" == 0 ] && [ "$CHECK_TRANSITION_STATUS" != "(null)" ];
 then
-        if [ "$CHECK_ELECTION_RESULT" == "$NEW_ADNL_KEY" ] || [ "$CHECK_ELECTION_RESULT" == "$SECOND_NEW_ADNL_KEY" ];
+        if [ "$CHECK_ELECTION_RESULT_NEW_ADNL_KEY" == "$NEW_ADNL_KEY" ] || [ "$CHECK_ELECTION_RESULT_SECOND_NEW_ADNL_KEY" == "$SECOND_NEW_ADNL_KEY" ];
         then
                 printf "${GREEN}----------------ELECTED VALIDATOR----------------\n"
                 printf "Election Result: ${GREEN_BACKGROUND}${BLUE}SUCCESS${NO_COLOR}\n"
@@ -116,7 +116,7 @@ then
         else
                 printf "${RED}----------------ELECTION FAILED---------------${NO_COLOR}\n"
                 printf "${YELLOW}Stakes Held Until"
-                printf "$CURRENT_ELECTION_UNTIL_HUMANTIME"
+                printf "$CURRENT_ELECTION_UNTIL_HUMANTIME\n"
                 printf "Next Election: "
                 printf "$NEXT_ELECTION_SINCE_HUMANTIME${NO_COLOR}\n"
         fi
