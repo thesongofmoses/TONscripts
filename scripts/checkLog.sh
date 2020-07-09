@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #0 - variables
-TAIL_NUMBER='20000'
+TAIL_NUMBER='5000'
 
 #1A - print texts
 PRINT_UNIXTIME_TEXT=$(printf 'UNIX_TIME:')
