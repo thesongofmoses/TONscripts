@@ -1,8 +1,9 @@
 #!/bin/bash
 
 #backup keys
-mkdir ~/keys.backup && \
-mv ~/ton-keys ~/keys.backup/ton-keys
+mkdir ~/validator.backup && \
+mv ~/ton-keys ~/validator.backup/ton-keys
+mv /var/ton-work/db/keyring ~/validator.backup/keyring
 
 #delete existing dirs
 sudo rm -rf /var/ton-work \
@@ -16,10 +17,6 @@ cd && git clone https://github.com/tonlabs/net.ton.dev.git && \
 cd net.ton.dev/scripts && \
 . ./env.sh && \
 ./build.sh && \
-
-#restore keys
-mv ~/keys.backup/ton-keys ~/
-rm -rf ~/keys.backup
 
 #run
 export NETWORK_TYPE="${1}" && \
