@@ -101,7 +101,7 @@ then
                 printf "Election ID: "
                 printf "$CURRENT_ACTIVE_ELECTION_ID\n"
                 printf "Staked Tokens: "
-                printf "$NEXT_MY_STAKED_TOKENS$\n"
+                printf "$NEXT_MY_STAKED_TOKENS\n"
                 printf "Expected Reward: "
                 printf "$EXPECTED_MY_TOTAL_BONUS\n"
                 printf "Expected Interest Rate: "
