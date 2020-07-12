@@ -3,6 +3,7 @@
 . ~/node.operator/configs/scripts.config
 
 #CHECK VALIDATION STATUS
+## if NO election and NO transition status
 if [ "$CHECK_ELECTION_STATUS" == 0 ] && [ "$CHECK_TRANSITION_STATUS" == "(null)" ];
 then
         if [ "$CHECK_VALIDATION_STATUS_NEW_ADNL_KEY" == "$NEW_ADNL_KEY" ] || [ "$CHECK_VALIDATION_STATUS_SECOND_NEW_ADNL_KEY" == "$SECOND_NEW_ADNL_KEY" ];
@@ -26,9 +27,26 @@ then
         fi
 fi
 
+## if YES election
 if [ "$CHECK_ELECTION_STATUS" != 0 ];
 then
-        if [ "$CHECK_VALIDATION_STATUS_PREVIOUS_ADNL_KEY" == "$PREVIOUS_ADNL_KEY" ] || [ "$CHECK_VALIDATION_STATUS_SECOND_PREVIOUS_ADNL_KEY" == "$SECOND_PREVIOUS_ADNL_KEY" ];
+        ## if YES stakes available for recovery
+        if [ "MY_COMPUTE_REWARD" != 0 ] && [ "$CHECK_VALIDATION_STATUS_NEW_ADNL_KEY" == "$NEW_ADNL_KEY" ] || [ "$CHECK_VALIDATION_STATUS_SECOND_NEW_ADNL_KEY" == "$SECOND_NEW_ADNL_KEY" ];
+        then
+                printf "${CYAN}-------------CURRENTLY VALIDATING-------------\n"
+                printf "Validation Until: "
+                printf "$CURRENT_VALIDATION_UNTIL_HUMANTIME\n"
+                printf "Next Election: "
+                printf "$CURRENT_ELECTION_SINCE_HUMANTIME\n"
+                printf "Rewards Earned: "
+                printf "$CURRENT_MY_BONUS_TRANSITION\n"
+                printf "Recoverable: "
+                printf "$NEXT_ELECTION_SINCE_HUMANTIME${NO_COLOR}\n"
+                printf "${YELLOW}Next Election: "
+                printf "$CURRENT_ELECTION_SINCE_HUMANTIME${NO_COLOR}\n"
+
+        ## if NO stakes available for recovery
+        elif [ "$MY_COMPUTE_REWARD" == 0 ] && [ "$CHECK_VALIDATION_STATUS_PREVIOUS_ADNL_KEY" == "$PREVIOUS_ADNL_KEY" ] || [ "$CHECK_VALIDATION_STATUS_SECOND_PREVIOUS_ADNL_KEY" == "$SECOND_PREVIOUS_ADNL_KEY" ];
         then
                 printf "${CYAN}-------------CURRENTLY VALIDATING-------------\n"
                 printf "Validation Until: "
@@ -49,6 +67,7 @@ then
         fi
 fi
 
+## if YES transition status
 if [ "$CHECK_TRANSITION_STATUS" != "(null)" ];
 then
         if [ "$CHECK_VALIDATION_STATUS_PREVIOUS_ADNL_KEY" == "$PREVIOUS_ADNL_KEY" ];
@@ -91,8 +110,12 @@ then
                 printf "$NEXT_ELECTION_SINCE_HUMANTIME${NO_COLOR}\n"
                 printf "${YELLOW}Election Result: "
                 printf "$CURRENT_ELECTION_UNTIL_HUMANTIME${NO_COLOR}\n"
-
-        elif [ "$CHECK_ELECTION_SUBMISSION" == 0 ];
+        elif [ "$MY_COMPUTE_REWARD" != 0 ];
+        then
+                printf "${YELLOW}------------------RECOVER STAKES-------------------${NO_COLOR}\n"
+                printf "Available For Recovery: "
+                printf "${GREEN}$MY_COMPUTE_REWARD${NO_COLOR}\n"
+        elif [ "$CHECK_ELECTION_SUBMISSION" == 0 ] && [ "$MY_COMPUTE_REWARD" == 0 ];
         then
                 printf "${RED}--------------SUBMISSION UNCONFIRMED--------------\n"
                 printf "WARNING: NO STAKES FOUND\n"
@@ -121,4 +144,3 @@ then
                 printf "$NEXT_ELECTION_SINCE_HUMANTIME${NO_COLOR}\n"
         fi
 fi
-
