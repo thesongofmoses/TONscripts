@@ -123,7 +123,7 @@ then
                 printf "WARNING: NO STAKES FOUND\n"
                 printf "Election ID: "
                 printf "$CURRENT_ACTIVE_ELECTION_ID\n"
-                printf "Election Until: "
+                printf "${YELLOW}Election Until: "
                 printf "$CURRENT_ELECTION_UNTIL_HUMANTIME${NO_COLOR}\n"
         fi
 fi
@@ -142,7 +142,7 @@ then
                 printf "${RED}----------------ELECTION FAILED---------------${NO_COLOR}\n"
                 printf "${YELLOW}Stakes Held Until"
                 printf "$CURRENT_ELECTION_UNTIL_HUMANTIME\n"
-                printf "Next Election: "
+                printf "${YELLOW}Next Election: "
                 printf "$NEXT_ELECTION_SINCE_HUMANTIME${NO_COLOR}\n"
         fi
 fi
