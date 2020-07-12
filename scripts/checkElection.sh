@@ -114,7 +114,9 @@ then
         then
                 printf "${RED}----------------RECOVER STAKES-----------------${NO_COLOR}\n"
                 printf "${YELLOW}Available For Recovery${NO_COLOR}: "
-                printf "${GREEN}$MY_COMPUTE_REWARD${NO_COLOR}\n"
+                printf "${GREEN}$MY_COMPUTE_REWARD_BALANCE${NO_COLOR}\n"
+                printf "Election Until: "
+                printf "$CURRENT_ELECTION_UNTIL_HUMANTIME${NO_COLOR}\n"
         elif [ "$CHECK_ELECTION_SUBMISSION" == 0 ] && [ "$MY_COMPUTE_REWARD" == 0 ];
         then
                 printf "${RED}--------------SUBMISSION UNCONFIRMED--------------\n"
