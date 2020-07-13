@@ -3,7 +3,7 @@
 HOSTNAME=$(cat /etc/hostname)
 
 #unit is nanogram
-BALANCE_BY='5000000000'
+BALANCE_BY='2000000000'
 FEE_RESERVE='2000000000'
 
 #variables
