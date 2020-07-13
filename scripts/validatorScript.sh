@@ -3,8 +3,8 @@
 . ~/node.operator/configs/scripts.config
 
 #variables
-BALANCE_BY='5'
-SLEEP_BY='1200'
+BALANCE_BY='2'
+SLEEP_BY='60'
 FEES_RESERVE='1'
 
 BALANCE=$(echo $MY_BALANCE-$BALANCE_BY-$FEES_RESERVE | bc -l)
