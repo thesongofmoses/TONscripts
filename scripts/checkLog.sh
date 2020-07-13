@@ -120,7 +120,7 @@ COUNT_FAILED_TO_INIT_CRYPTO=$(tail -n $TAIL_NUMBER /var/ton-work/node.log | grep
 
 #3 - FUNCTION
 function checkLog () {
-        printf '%s %u; %s %s; %s %s; %s %s; %s %s; %s %s; %s %s; %s %s; %s %s; %s %s; %s %s; %s %s; %s %s; %s %s; %s %s; %s %s; %s %s; %s %s; %s %s; %s %s; %s %s; %s %s; %s %s; %s %s; %s %s; %s %s; %s %s; %s %s; %s %s; %s %s; %s %s; %s %s; %s %s; %s %s; %s %s; %s %s; %s %s\n' \
+        printf '%s %u; %s %s; %s %s; %s %s; %s %s; %s %s; %s %s; %s %s; %s %s; %s %s; %s %s; %s %s; %s %s; %s %s; %s %s; %s %s; %s %s; %s %s; %s %s; %s %s; %s %s; %s %s; %s %s; %s %s; %s %s; %s %s; %s %s; %s %s; %s %s; %s %s; %s %s; %s %s; %s %s; %s %s; %s %s; %s %s\n' \
         "$PRINT_UNIXTIME" "$CHECK_UNIXTIME" \
         "$PRINT_TIME_DIFF" "$CHECK_TIME_DIFF" \
         "$PRINT_SLOW_TOTAL" "$COUNT_SLOW_TOTAL" \
@@ -152,7 +152,6 @@ function checkLog () {
                 "$PRINT_ERROR_653" "$COUNT_ERROR_653" \
                 "$PRINT_ERROR_666" "$COUNT_ERROR_666" \
                         "$PRINT_FAILED_TO_VALIDATE_CANDIDATE" "$COUNT_FAILED_TO_VALIDATE_CANDIDATE" \
-                        "$PRINT_CANNOT_GENERATE_BLOCK_CANDIDATE" "$COUNT_CANNOT_GENERATE_BLOCK_CANDIDATE" \
                 "$PRINT_ERROR_667" "$COUNT_ERROR_667" \
                         "$PRINT_CANNOT_GENERATE_BLOCK_CANDIDATE" "$COUNT_CANNOT_GENERATE_BLOCK_CANDIDATE" \
                 "$PRINT_ERROR_POSIXERROR" "$COUNT_ERROR_POSIXERROR" \
