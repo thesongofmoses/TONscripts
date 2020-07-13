@@ -1,9 +1,9 @@
 #!/bin/bash
 
-#0 - variables
+#0 - VARIABLES
 TAIL_NUMBER='5000'
 
-#1A - print texts
+#1A - PRINT TEXTS
 ##time
 PRINT_UNIXTIME=$(printf 'UNIX_TIME:')
 PRINT_TIME_DIFF=$(printf 'TIME_DIFF:')
@@ -59,7 +59,7 @@ PRINT_ERROR_POSIXERROR=$(printf 'POSIXERROR:')
 PRINT_VALIDATOR_SESSION_WARNING=$(printf 'VALIDATOR_SESSION_WARNING:')
 PRINT_FAILED_AUTOMATED_VALIDITY_CHECKS=$(printf 'FAILED_AUTOMATED_VALIDITY_CHECKS')
 
-#2A - general data and errors from node.log
+#2A - COUNTS
 ##time
 CHECK_UNIXTIME=$(date +%s)
 CHECK_TIME_DIFF=$(~/net.ton.dev/scripts/check_node_sync_status.sh | awk 'FNR == 14 {print $4}')
@@ -96,7 +96,6 @@ COUNT_ERROR_603=$(tail -n $TAIL_NUMBER /var/ton-work/node.log | grep 'Error : 60
 COUNT_ERROR_621=$(tail -n $TAIL_NUMBER /var/ton-work/node.log | grep 'Error : 621' | wc -l)
 COUNT_BAD_OVERLAY_ID=$(tail -n $TAIL_NUMBER /var/ton-work/node.log | grep 'bad overlay_id' | wc -l)
 
-
 COUNT_ERROR_651=$(tail -n $TAIL_NUMBER /var/ton-work/node.log | grep 'Error : 651' | wc -l)
 COUNT_RLDP_QUERY_FAILED=$(tail -n $TAIL_NUMBER /var/ton-work/node.log | grep 'rldp query failed' | wc -l)
 
@@ -108,10 +107,8 @@ COUNT_ERROR_666=$(tail -n $TAIL_NUMBER /var/ton-work/node.log | grep 'Error : -6
 COUNT_ERROR_667=$(tail -n $TAIL_NUMBER /var/ton-work/node.log | grep 'Error : -667' | wc -l)
 COUNT_CANNOT_GENERATE_BLOCK_CANDIDATE=$(tail -n $TAIL_NUMBER /var/ton-work/node.log | grep 'cannot generate block candidate' | wc -l)
 
-
 COUNT_ERROR_POSIXERROR=$(tail -n $TAIL_NUMBER /var/ton-work/node.log | grep 'PosixError' | wc -l)
 COUNT_INCONN=$(tail -n $TAIL_NUMBER /var/ton-work/node.log | grep 'inconn' | wc -l)
-
 
 ##validator-session
 COUNT_VALIDATOR_SESSION_WARNING=$(tail -n $TAIL_NUMBER /var/ton-work/node.log | grep 'VALIDATOR_SESSION_WARNING' | wc -l)
@@ -121,7 +118,7 @@ COUNT_FAILED_AUTOMATED_VALIDITY_CHECKS=$(tail -n $TAIL_NUMBER /var/ton-work/node
 COUNT_FAILED_TO_INIT_CRYPTO=$(tail -n $TAIL_NUMBER /var/ton-work/node.log | grep 'failed to init crypto' | wc -l)
 
 
-#3 - execute commands
+#3 - FUNCTION
 function checkLog () {
         printf '%s %u; %s %s; %s %s; %s %s; %s %s; %s %s; %s %s; %s %s; %s %s; %s %s; %s %s; %s %s; %s %s; %s %s; %s %s; %s %s; %s %s; %s %s; %s %s; %s %s; %s %s; %s %s; %s %s; %s %s; %s %s; %s %s; %s %s; %s %s; %s %s; %s %s; %s %s; %s %s; %s %s; %s %s; %s %s; %s %s; %s %s\n' \
         "$PRINT_UNIXTIME" "$CHECK_UNIXTIME" \
