@@ -10,6 +10,6 @@ SLEEP_DELAY='60'
 
 BALANCE=$(echo "scale=0; $MY_BALANCE-$BALANCE_BY-$FEES_RESERVE" | bc -l)
 SLEEP="$(($RANDOM% $SLEEP_BY+$SLEEP_DELAY))"
-STAKE="$(($RANDOM% $BALANCE_BY+$MY_BALANCE))"
+STAKE="$(($RANDOM% $BALANCE_BY+$BALANCE))"
 
 sleep $SLEEP && cd ~/net.ton.dev/scripts && ./validator_msig.sh $STAKE >> ~/node.operator/logs/validator.log
