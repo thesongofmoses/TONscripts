@@ -1,10 +1,5 @@
 #!/bin/bash
 
-#backup keys
-mkdir ~/validator.backup && \
-mv ~/ton-keys ~/validator.backup/ton-keys
-mv /var/ton-work/db/keyring ~/validator.backup/keyring
-
 #delete existing dirs
 sudo rm -rf /var/ton-work \
 rm -rf ~/ton-keys \
