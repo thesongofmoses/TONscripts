@@ -22,4 +22,4 @@ Update and import crontab
 
 Update but NOT import crontab
 	
-	cd && rm -rf moses.update && mkdir moses.update && cd moses.update && git clone https://github.com/thesongofmoses/node.operator.git && rm -rf ~/node.operator/scripts && mv ~/moses.update/node.operator/scripts ~/node.operator/scripts && rm -rf ~/node.operator/configs && mv ~/moses.update/node.operator/configs ~/node.operator/configs && cat ~/node.operator/configs/bashrc.config > ~/.bashrc && source ~/.bashrc && rm -rf ~/moses.update && cd && chmod +x -R ~/node.operator/scripts
+	cd && rm -rf moses.update && mkdir moses.update && cd moses.update && git clone https://github.com/thesongofmoses/node.operator.git && rm -rf ~/node.operator/scripts && mv ~/moses.update/node.operator/scripts ~/node.operator/scripts && rm -rf ~/node.operator/configs && mv ~/moses.update/node.operator/configs ~/node.operator/configs && cat ~/node.operator/configs/bashrc.config > ~/.bashrc && source ~/.bashrc && rm -rf ~/moses.update && cd && chmod +x -R ~/node.operator/scripts && cat ~/node.operator/configs/bashrc.config > ~/.bashrc && source ~/.bashrc
