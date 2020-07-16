@@ -1,5 +1,9 @@
 #!/bin/bash
 
+#kill engine, console
+killall -15 validator-engine
+killall -15 validator-engine-console
+
 #delete existing dirs
 sudo rm -rf /var/ton-work \
 rm -rf ~/ton-keys \
