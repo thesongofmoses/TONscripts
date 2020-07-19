@@ -30,8 +30,8 @@ fi
 ## if YES election
 if [ "$CHECK_ELECTION_STATUS" != 0 ];
 then
-        ## if YES stakes available for recovery
-        if [ "MY_COMPUTE_REWARD" != 0 ] && [ "$CHECK_VALIDATION_STATUS_NEW_ADNL_KEY" == "$NEW_ADNL_KEY" ] || [ "$CHECK_VALIDATION_STATUS_SECOND_NEW_ADNL_KEY" == "$SECOND_NEW_ADNL_KEY" ];
+        ## if YES election submission
+        if [ "CHECK_ELECTION_SUBMISSION" != 0 ] && [ "$CHECK_VALIDATION_STATUS_NEW_ADNL_KEY" == "$NEW_ADNL_KEY" ] || [ "$CHECK_VALIDATION_STATUS_SECOND_NEW_ADNL_KEY" == "$SECOND_NEW_ADNL_KEY" ];
         then
                 printf "${CYAN}-------------CURRENTLY VALIDATING-------------\n"
                 printf "Validation Until: "
@@ -45,8 +45,8 @@ then
                 printf "${YELLOW}Next Election: "
                 printf "$CURRENT_ELECTION_SINCE_HUMANTIME${NO_COLOR}\n"
 
-        ## if NO stakes available for recovery
-        elif [ "$MY_COMPUTE_REWARD" == 0 ] && [ "$CHECK_VALIDATION_STATUS_PREVIOUS_ADNL_KEY" == "$PREVIOUS_ADNL_KEY" ] || [ "$CHECK_VALIDATION_STATUS_SECOND_PREVIOUS_ADNL_KEY" == "$SECOND_PREVIOUS_ADNL_KEY" ];
+        ## if NO election submission
+        elif [ "$CHECK_ELECTION_SUBMISSION" == 0 ] && [ "$CHECK_VALIDATION_STATUS_PREVIOUS_ADNL_KEY" == "$PREVIOUS_ADNL_KEY" ] || [ "$CHECK_VALIDATION_STATUS_SECOND_PREVIOUS_ADNL_KEY" == "$SECOND_PREVIOUS_ADNL_KEY" ];
         then
                 printf "${CYAN}-------------CURRENTLY VALIDATING-------------\n"
                 printf "Validation Until: "
