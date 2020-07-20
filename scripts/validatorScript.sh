@@ -1,7 +1,5 @@
 #!/bin/bash
 
-. ~/node.operator/configs/scripts.config
-
 #variables
 FEES_RESERVE='2'
 SLEEP_BY='180'
