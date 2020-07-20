@@ -46,7 +46,7 @@ then
                 printf "$CURRENT_ELECTION_SINCE_HUMANTIME${NO_COLOR}\n"
 
         ## if NO election submission
-        elif [ "$CHECK_ELECTION_SUBMISSION" == 0 ] && [ "$CHECK_VALIDATION_STATUS_PREVIOUS_ADNL_KEY" == "$PREVIOUS_ADNL_KEY" ] || [ "$CHECK_VALIDATION_STATUS_SECOND_PREVIOUS_ADNL_KEY" == "$SECOND_PREVIOUS_ADNL_KEY" ];
+        elif [ "$CHECK_ELECTION_SUBMISSION" == 0 ] && [ "$CHECK_VALIDATION_STATUS_NEW_ADNL_KEY" == "$NEW_ADNL_KEY" ] || [ "$CHECK_VALIDATION_STATUS_SECOND_NEW_ADNL_KEY" == "$SECOND_NEW_ADNL_KEY" ];
         then
                 printf "${CYAN}-------------CURRENTLY VALIDATING-------------\n"
                 printf "Validation Until: "
