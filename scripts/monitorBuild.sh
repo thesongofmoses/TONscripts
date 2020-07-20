@@ -28,6 +28,7 @@ sudo pip install psutil
 #install api key
 cd ~/node.operator/configs && \
 wget https://raw.githubusercontent.com/kevintmax/pykey/master/"${API_KEY}".json
+mv "${API_KEY}".json py.json
 
 #define cell for check.py and node # for alarm.py
 cd ~/node.operator/configs && \
