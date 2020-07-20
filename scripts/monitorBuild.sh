@@ -12,10 +12,10 @@ git clone https://github.com/kevintmax/monitor/ && \
 chmod -R +x ~/node.operator/monitor
 
 #install tg bot
-pip uninstall -y python-telegram-bot; \
-pip uninstall -y telegram; \
-pip uninstall -y telegram-bot; \
-pip install -y telegram-bot
+pip uninstall python-telegram-bot; \
+pip uninstall telegram; \
+pip uninstall telegram-bot; \
+pip install telegram-bot
 
 #install python, gspread,psutil
 sudo apt install -y python && \
