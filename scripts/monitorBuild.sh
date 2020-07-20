@@ -17,7 +17,6 @@ pip uninstall -y telegram; \
 pip uninstall -y telegram-bot; \
 pip install -y telegram-bot
 
-#INSTALL CHECK.PY
 #install python, gspread,psutil
 sudo apt install -y python && \
 sudo apt update && \
