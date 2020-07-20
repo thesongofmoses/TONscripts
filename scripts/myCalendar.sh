@@ -1,7 +1,5 @@
 #!/bin/bash
 
-. ~/node.operator/configs/scripts.config
-
 # print calendar
 echo '--------------ELECTIONS-------------'
 echo 'Previous Election'
