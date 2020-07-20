@@ -29,7 +29,7 @@ sudo pip install psutil
 cd ~/node.operator/configs && \
 wget https://raw.githubusercontent.com/kevintmax/pykey/master/"${API_KEY}".json
 
-#define cell for check.sh and node # for alarm.sh
-cd ~/node.operator/monitor && \
-echo "CELL=${CELL}" > checknode && ./check.sh
-echo "NODE=${NODE}" > alarmnode && ./alarm.sh
+#define cell for check.py and node # for alarm.py
+cd ~/node.operator/configs && \
+echo "CELL=${CELL}" > cell.config && ~/node.operator/monitor/check.sh
+echo "NODE=${NODE}" > node.config && ~/node.operator/monitor/alarm.sh
