@@ -31,7 +31,7 @@ fi
 if [ "$CHECK_ELECTION_STATUS" != 0 ];
 then
         ## if YES election submission
-        if [ "CHECK_ELECTION_SUBMISSION" != 0 ] && [ "$CHECK_VALIDATION_STATUS_NEW_ADNL_KEY" == "$NEW_ADNL_KEY" ] || [ "$CHECK_VALIDATION_STATUS_SECOND_NEW_ADNL_KEY" == "$SECOND_NEW_ADNL_KEY" ];
+        if [ "CHECK_ELECTION_SUBMISSION" != 0 ] && [ "$CHECK_VALIDATION_STATUS_PREVIOUS_ADNL_KEY" == "$PREVIOUS_ADNL_KEY" ] || [ "$CHECK_VALIDATION_STATUS_SECOND_PREVIOUS_ADNL_KEY" == "$SECOND_PREVIOUS_ADNL_KEY" ];
         then
                 printf "${CYAN}-------------CURRENTLY VALIDATING-------------\n"
                 printf "Validation Until: "
