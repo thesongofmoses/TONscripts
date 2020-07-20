@@ -1,7 +1,5 @@
 #!/bin/bash
 
-. ~/node.operator/configs/scripts.config
-
 CHECK_RECIPIENT_ACCOUNT=$(cd ~/net.ton.dev/ton/build/lite-client && ./lite-client -p ~/ton-keys/liteserver.pub -a 127.0.0.1:3031 -rc "getaccount ${1}" -rc 'quit' 2>/dev/null | grep account | awk 'FNR == 3 {print $1}' | perl -ne '/state:\(account_(\S+)/ && print $1')
 
 if [ "$CHECK_RECIPIENT_ACCOUNT" == 'active' ];
