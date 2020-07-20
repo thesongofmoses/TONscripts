@@ -3,7 +3,7 @@
 . ~/node.operator/configs/scripts.config
 
 #variables
-FEES_RESERVE='1'
+FEES_RESERVE='2'
 SLEEP_BY='180'
 SLEEP_DELAY='90'
 
