@@ -1,7 +1,5 @@
 #!/bin/bash
 
-. ~/node.operator/configs/scripts.config
-
 printf "Address: "
 echo $MY_RAW_ADDRESS
 printf "Status: "
