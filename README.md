@@ -6,7 +6,7 @@ These scripts are created to help node operators. All the paths used are the def
 
 Install dependencies and download/setup repo
 	
-	sudo apt install -y git && cd && rm -rf ~/node.operator && git clone https://github.com/thesongofmoses/node.operator.git && chmod +x -R ~/node.operator/scripts && cat ~/node.operator/configs/bashrc.config > ~/.bashrc && source ~/.bashrc && sudo apt install bc
+	sudo apt install -y git && cd && rm -rf ~/node.operator && git clone https://github.com/thesongofmoses/node.operator.git && chmod +x -R ~/node.operator/scripts && cat ~/node.operator/configs/bashrc.config > ~/.bashrc && source ~/.bashrc && sudo apt install bc && cd ~/node.operator/scripts && . ~/node.operator/configs/scripts.config
 
 Import crontab after completion of sync
 
@@ -16,8 +16,8 @@ Import crontab after completion of sync
 
 Update and import crontab
 	
-	cd && rm -rf moses.update && mkdir moses.update && cd moses.update && git clone https://github.com/thesongofmoses/node.operator.git && rm -rf ~/node.operator/scripts && mv ~/moses.update/node.operator/scripts ~/node.operator/scripts && mv ~/moses.update/node.operator/configs/bashrc.config ~/node.operator/configs/bashrc.config && mv ~/moses.update/node.operator/configs/crontab.config ~/node.operator/configs/crontab.config && mv ~/moses.update/node.operator/configs/scripts.config ~/node.operator/configs/scripts.config && cat ~/node.operator/configs/bashrc.config > ~/.bashrc && source ~/.bashrc && crontab ~/node.operator/configs/crontab.config && rm -rf ~/moses.update && cd && chmod +x -R ~/node.operator/scripts
+	cd && rm -rf moses.update && mkdir moses.update && cd moses.update && git clone https://github.com/thesongofmoses/node.operator.git && rm -rf ~/node.operator/scripts && mv ~/moses.update/node.operator/scripts ~/node.operator/scripts && mv ~/moses.update/node.operator/configs/bashrc.config ~/node.operator/configs/bashrc.config && mv ~/moses.update/node.operator/configs/crontab.config ~/node.operator/configs/crontab.config && mv ~/moses.update/node.operator/configs/scripts.config ~/node.operator/configs/scripts.config && cat ~/node.operator/configs/bashrc.config > ~/.bashrc && source ~/.bashrc && crontab ~/node.operator/configs/crontab.config && rm -rf ~/moses.update && cd && chmod +x -R ~/node.operator/scripts && cd ~/node.operator/scripts && . ~/node.operator/configs/scripts.config
 
 Update but NOT import crontab
 	
-	cd && rm -rf moses.update && mkdir moses.update && cd moses.update && git clone https://github.com/thesongofmoses/node.operator.git && rm -rf ~/node.operator/scripts && mv ~/moses.update/node.operator/scripts ~/node.operator/scripts && mv ~/moses.update/node.operator/configs/bashrc.config ~/node.operator/configs/bashrc.config && mv ~/moses.update/node.operator/configs/crontab.config ~/node.operator/configs/crontab.config && mv ~/moses.update/node.operator/configs/scripts.config ~/node.operator/configs/scripts.config && cat ~/node.operator/configs/bashrc.config > ~/.bashrc && source ~/.bashrc && rm -rf ~/moses.update && cd && chmod +x -R ~/node.operator/scripts
+	cd && rm -rf moses.update && mkdir moses.update && cd moses.update && git clone https://github.com/thesongofmoses/node.operator.git && rm -rf ~/node.operator/scripts && mv ~/moses.update/node.operator/scripts ~/node.operator/scripts && mv ~/moses.update/node.operator/configs/bashrc.config ~/node.operator/configs/bashrc.config && mv ~/moses.update/node.operator/configs/crontab.config ~/node.operator/configs/crontab.config && mv ~/moses.update/node.operator/configs/scripts.config ~/node.operator/configs/scripts.config && cat ~/node.operator/configs/bashrc.config > ~/.bashrc && source ~/.bashrc && rm -rf ~/moses.update && cd && chmod +x -R ~/node.operator/scripts && cd ~/node.operator/scripts && . ~/node.operator/configs/scripts.config
