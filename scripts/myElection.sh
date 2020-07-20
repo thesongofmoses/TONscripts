@@ -1,7 +1,5 @@
 #!/bin/bash
 
-. ~/node.operator/configs/scripts.config
-
 #CHECK VALIDATION STATUS
 ## if NO election and NO transition status
 if [ "$CHECK_ELECTION_STATUS" == 0 ] && [ "$CHECK_TRANSITION_STATUS" == "(null)" ];
