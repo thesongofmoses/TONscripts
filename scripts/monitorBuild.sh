@@ -33,4 +33,5 @@ mv "${API_KEY}".json py.json
 #define cell for check.py and node # for alarm.py
 cd ~/node.operator/configs && \
 echo "CELL='${CELL}'" > cell.config && ~/node.operator/monitor/check.sh
+cd ~/node.operator/configs && \
 echo "NODE='${NODE}'" > node.config && ~/node.operator/monitor/alarm.sh
