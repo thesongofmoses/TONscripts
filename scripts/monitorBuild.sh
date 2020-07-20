@@ -1,6 +1,6 @@
 #!/bin/bash
 
-NODE="${1}"
+NODE=$(whoami)
 API_KEY=$(echo "$NODE" | cut -c 1)
 CELL_UNPARSED=$(expr "$NODE" + 2)
 CELL=$(printf "B%s" "$CELL_UNPARSED")
