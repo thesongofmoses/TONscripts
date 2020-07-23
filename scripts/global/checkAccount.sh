@@ -1,7 +1,7 @@
 #!/bin/bash
 
 RAW_ADDRESS="${1}"
-CHECK_ACCOUNT=$(cd ~/net.ton.dev/ton/build/lite-client && ./lite-client -p ~/ton-keys/liteserver.pub -a 127.0.0.1:3031 -rc "getaccount $RAW_ADDRESS" -rc 'quit' 2>/dev/null)
+CHECK_ACCOUNT=$(cd ~/main.ton.dev/ton/build/lite-client && ./lite-client -p ~/ton-keys/liteserver.pub -a 127.0.0.1:3031 -rc "getaccount $RAW_ADDRESS" -rc 'quit' 2>/dev/null)
 CHECK_ACCOUNT_STATUS=$(echo "$CHECK_ACCOUNT" | grep account | awk 'FNR == 3 {print $1}' | perl -ne '/state:\(account_(\S+)/ && print $1')
 LAST_TRANS_LT=$(echo "$CHECK_ACCOUNT" | grep account | awk 'FNR == 2 {print $2}' | tr -d 'last_trans_lt:')
 LAST_TX_UNIXTIME=$(echo "$CHECK_ACCOUNT" | grep last_paid | awk '{print $4}' | tr -d 'last_paid:')
