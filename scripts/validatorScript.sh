@@ -4,8 +4,8 @@
 
 #variables
 FEES_RESERVE='2'
-SLEEP_BY='180'
-SLEEP_DELAY='90'
+SLEEP_BY='600'
+SLEEP_DELAY='60'
 
 BALANCE=$(echo $MY_BALANCE-$FEES_RESERVE | bc -l)
 STAKE=$(printf "%.0f" $BALANCE)
